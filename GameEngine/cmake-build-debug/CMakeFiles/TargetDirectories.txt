@@ -1,3 +1,0 @@
-C:/Users/garde/Desktop/School/Software Engineering/Git/GameEngineDev/GameEngine/cmake-build-debug/CMakeFiles/GameEngine.dir
-C:/Users/garde/Desktop/School/Software Engineering/Git/GameEngineDev/GameEngine/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/garde/Desktop/School/Software Engineering/Git/GameEngineDev/GameEngine/cmake-build-debug/CMakeFiles/rebuild_cache.dir
