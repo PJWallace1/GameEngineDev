@@ -1,0 +1,21 @@
+Function
+move left
+move right
+jump
+shoot
+crouch(possible)
+reload
+aim
+interact with the game world
+throw
+Inventory
+switch
+activate ability
+use item
+
+
+Attribute
+collide
+visible
+sprite
+moveable
