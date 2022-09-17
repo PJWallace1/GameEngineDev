@@ -12,6 +12,10 @@ accessInventory()
 switch()
 activate ability
 use item
+melee attack
+Escape
+
+
 
 
 Attribute
