@@ -1,15 +1,15 @@
 Function
-move left
-move right
-jump
-shoot
-crouch(possible)
-reload
-aim
-interact with the game world
-throw
-Inventory
-switch
+void moveLeft(int numPix, Obj myObj)
+void moveRight(int numPix, Obj myObj)
+void jump(int numPix, Obj myObj)
+shoot()
+crouch() //possible
+reload()
+aim()
+interact with the game world()
+throw()
+accessInventory()
+switch()
 activate ability
 use item
 

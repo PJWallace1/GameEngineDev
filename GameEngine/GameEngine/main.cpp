@@ -70,7 +70,7 @@ int main()
     }
     //Process the method calls in the queue
     while (!processes.empty()) {
-      switch(processes.back())
+      switch(processes.front())
       {
       case moveUp:
         PhysicsEngine::moveUp(PLAYER_SPEED, rectangle);
