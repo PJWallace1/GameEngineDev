@@ -5,21 +5,39 @@ void jump(int numPix, Obj myObj)
 shoot()
 crouch() //possible
 reload()
-aim()
-interact with the game world()
-throw()
+interact()
+discardItem()
 accessInventory()
-switch()
+switchItem()
 activate ability
 use item
 melee attack
 Escape
 
-
+Flesh out functions with method header and comments explaining what each part does
 
 
 Attribute
 collide
 visible
-sprite
 moveable
+isPlayer
+destroyable
+
+loop through collidable array and check to see collision
+add pair to collision vector
+give each object unique id
+
+<name>
+Bob
+<visible>
+	<XPos>
+	0
+	<YPos>
+	0
+	<Spritesheet>
+	foo
+</visible>
+<colliodable>
+
+create function generates objects before loop
