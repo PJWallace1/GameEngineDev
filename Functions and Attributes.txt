@@ -64,12 +64,12 @@ activate ability(){
 	//Check to make sure ability can be activated
 	//Apply ability effects
 }
-use item(Player p){
+useItem(Player p){
 	//Check player has item
 	//Confirm item can be used
 	//Apply item effects	
 }
-melee attack(Player p){
+meleeAttack(Player p){
 	if(p.attackTimer == 0){
 		Hitbox m = new Hitbox(p.getAttackCoords(), p.getAttackWidth(), p.getAttackHeight());
 		PhysicsEngine.addCollisionObj(m);
@@ -109,3 +109,8 @@ Bob
 <colliodable>
 
 create function generates objects before loop
+user build json (gui could help)
+
+
+int x;
+inttt x;
