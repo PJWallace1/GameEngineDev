@@ -1,2 +1,40 @@
-﻿  main.cpp
+﻿  PhysicsEngine.cpp
+c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\physicsengine.cpp(47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\physicsengine.cpp(50): warning C4244: '=': conversion from 'const T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\physicsengine.cpp(51): warning C4244: '=': conversion from 'const T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\physicsengine.cpp(59): warning C4018: '<': signed/unsigned mismatch
+c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\physicsengine.cpp(60): warning C4018: '<': signed/unsigned mismatch
+  main.cpp
+c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\physicsengine.cpp(47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\physicsengine.cpp(50): warning C4244: '=': conversion from 'const T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\physicsengine.cpp(51): warning C4244: '=': conversion from 'const T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\physicsengine.cpp(59): warning C4018: '<': signed/unsigned mismatch
+c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\physicsengine.cpp(60): warning C4018: '<': signed/unsigned mismatch
+c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\main.cpp(102): warning C4244: '=': conversion from 'const T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\main.cpp(103): warning C4244: '=': conversion from 'const T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Generating Code...
   GameEngine.vcxproj -> C:\Users\garde\Desktop\School\Software Engineering\Git\GameEngineDev\GameEngine\Debug\GameEngine.exe
