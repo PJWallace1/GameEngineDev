@@ -36,11 +36,26 @@ Obj createWall() {
   return Obj(rectangle, x, y);
 }
 
+/*
+  loops from the objects in the renderable array and draws them to the screen
+*/
+void renderScreen(sf::RenderWindow &window, std::vector<Obj*>& renderable) {
+  for (Obj* o : renderable) {
+    window.draw((*o).r);
+  }
+}
+
 int main()
 {
   //Create the window and set the frame limit
   RenderWindow window(VideoMode(WINOW_W, WINDOW_H), "Game Engine");
   window.setFramerateLimit(FPS_LIMIT);
+
+  //Object vectors
+  std::vector<Obj*> objects; //gameObjects
+  std::vector<Obj*> renderable; //renderable
+  std::vector<Obj*> collidable; //collidable
+  std::vector<Obj*> movable; //movable
 
   //An enum representing the possible methods a user can call through key presses
   enum MethodNames { null = -1, moveUp = 0, moveDown, moveRight, moveLeft };
@@ -63,13 +78,13 @@ int main()
   //Create a rectangle which represents a wall
   Obj wall = createWall();
 
-  pe.addToObjectVector(player);
-  pe.addToObjectVector(wall);
-  pe.addToRenderVector(player);
-  pe.addToRenderVector(wall);
-  pe.addToCollideVector(player);
-  pe.addToCollideVector(wall);
-  pe.addToMoveVector(player);
+  objects.push_back(&player);
+  objects.push_back(&wall);
+  renderable.push_back(&player);
+  renderable.push_back(&wall);
+  collidable.push_back(&player);
+  collidable.push_back(&wall);
+  movable.push_back(&player);
 
 
   while (window.isOpen())
@@ -122,12 +137,12 @@ int main()
       processes.pop();
     }
 
-    pe.calculateCollisions();
+    pe.calculateCollisions(collidable);
 
-    pe.moveObjects();
+    pe.moveObjects(movable);
 
     window.clear();
-    pe.renderScreen(window);
+    renderScreen(window, renderable);
     window.display();
   }
 
