@@ -1,0 +1,40 @@
+{
+"name": "Player",
+"positionX": ,
+"positionY": ,
+"width": ,
+"height": ,
+"HP": ,
+"ability": ,
+"sprite": ,
+"inventory":[
+{
+	"primaryWeapon": ,
+	"secondaryWeapon": ,
+	"Throwable": ,
+	"meleeWeapon": ,
+	"heal": ,
+	"gold": ,
+}
+
+
+{
+"name": "wall",
+"positionX": ,
+"positionY": ,
+"width": ,
+"height": ,
+"sprite": ,
+
+}
+
+
+{
+"name": "lootbox",
+"positionX": ,
+"positionY": ,
+"width": ,
+"height": ,
+"sprite": ,
+
+}

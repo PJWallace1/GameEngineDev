@@ -20,7 +20,8 @@ void jump(int numPix, Player p) {
 		p.setYPos(p.getYPos - numPix);
 	}
 }
-shoot(Gun g, Player p, int mouseX, int mouseY) {
+
+void shoot(Gun g, Player p, int mouseX, int mouseY) {
 	//Check that gun can shoot
 	//Create bullet(s)
 	//Apply trajectory
