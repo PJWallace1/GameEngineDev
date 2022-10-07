@@ -7,11 +7,6 @@
 class PhysicsEngine
 {
 private:
-  //Object vectors
-  std::vector<Obj*> object; //gameObjects
-  std::vector<Obj*> render; //renderable
-  std::vector<Obj*> collide; //collidable
-  std::vector<Obj*> move; //movable
   std::vector<std::pair<Obj*, Obj*>> collisions;
 
   bool checkCollision(Obj& o) {
@@ -29,20 +24,9 @@ public:
   void moveDown(float numPix, Obj& o) { o.r.move(0.f, numPix); }
   void moveRight(float numPix, Obj& o) { o.r.move(numPix, 0.f); }
 
-  //Add elements to vectors
-  void addToObjectVector(Obj& o) { object.push_back(&o); }
-  void addToRenderVector(Obj& o) { render.push_back(&o); }
-  void addToCollideVector(Obj& o) { collide.push_back(&o); }
-  void addToMoveVector(Obj& o) { move.push_back(&o); }
 
-  void renderScreen(sf::RenderWindow &window) {
-    for (Obj* o : render) {
-      window.draw((*o).r);
-    }
-  }
-
-  void moveObjects() {
-    for (Obj* o : move) {
+  void moveObjects(std::vector<Obj *>& movable) {
+    for (Obj* o : movable) {
       if (checkCollision(*o)) {
         (*o).r.setPosition((*o).x, (*o).y);
       }
@@ -53,15 +37,15 @@ public:
     }
   }
 
-  void calculateCollisions() {
+  void calculateCollisions(std::vector<Obj *>& collidable) {
     collisions.clear();
     //Loop through array and compare all values to eachother
-    for (int i = 0; i < collide.size(); i++) {
-      for (int j = i + 1; j < collide.size(); j++) {
+    for (int i = 0; i < collidable.size(); i++) {
+      for (int j = i + 1; j < collidable.size(); j++) {
         //If the objects intersect
-        if ((*collide[i]).r.getGlobalBounds().intersects((*collide[j]).r.getGlobalBounds())) {
+        if ((*collidable[i]).r.getGlobalBounds().intersects((*collidable[j]).r.getGlobalBounds())) {
           //Put the collision in a vector
-          collisions.push_back(std::pair<Obj*, Obj*>(collide[i], collide[j]));
+          collisions.push_back(std::pair<Obj*, Obj*>(collidable[i], collidable[j]));
         }
       }
     }

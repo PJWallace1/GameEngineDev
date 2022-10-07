@@ -1,4 +1,4 @@
-
+/*
 void moveLeft(int numPix, Player p) {
 	Playertemp = p;
 	temp.setXPos(p.getXPos + numPix);
@@ -82,3 +82,4 @@ Escape() {
 	//Change gamemode
 	//Create pause gui
 }
+*/
