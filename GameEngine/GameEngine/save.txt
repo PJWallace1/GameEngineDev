@@ -1,5 +1,5 @@
 {
-"name": "Player",
+"kindOfObject": "Player",
 "positionX": ,
 "positionY": ,
 "width": ,
@@ -7,8 +7,6 @@
 "HP": ,
 "ability": ,
 "sprite": ,
-"inventory":[
-{
 	"primaryWeapon": ,
 	"secondaryWeapon": ,
 	"Throwable": ,

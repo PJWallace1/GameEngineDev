@@ -26,7 +26,7 @@ Obj createPlayer() {
 }
 
 Obj createWall() {
-  int x = 300, y = 300;
+  int x = 300, y = 300; 
   RectangleShape rectangle;
   rectangle.setSize(sf::Vector2f(100, 50));
   rectangle.setOutlineColor(sf::Color::Yellow);
