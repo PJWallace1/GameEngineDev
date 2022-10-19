@@ -129,6 +129,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Obj.cpp" />
     <ClCompile Include="PhysicsEngine.cpp" />
+    <ClCompile Include="player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="save.txt" />

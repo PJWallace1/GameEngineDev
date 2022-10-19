@@ -1,5 +1,5 @@
 {
-"kindOfObject": "Player",
+"objectType": "Player",
 "positionX": ,
 "positionY": ,
 "width": ,
@@ -7,17 +7,31 @@
 "HP": ,
 "ability": ,
 "sprite": ,
-	"primaryWeapon": ,
-	"secondaryWeapon": ,
-	"Throwable": ,
-	"meleeWeapon": ,
-	"heal": ,
-	"gold": ,
+"primaryWeapon": ,
+"secondaryWeapon": ,
+"Throwable": ,
+"meleeWeapon": ,
+"heal": ,
+"gold": ,
 }
 
 
 {
-"name": "wall",
+"objectType": "Enemy",
+"positionX": ,
+"positionY": ,
+"width": ,
+"height": ,
+"HP": ,
+"ability": ,
+"sprite": ,
+"Weapon": ,
+}
+
+
+
+{
+"objectType": "EnvironmentObj":
 "positionX": ,
 "positionY": ,
 "width": ,
@@ -27,12 +41,52 @@
 }
 
 
+
 {
-"name": "lootbox",
+"objectType": "InteractableObj":
 "positionX": ,
 "positionY": ,
 "width": ,
 "height": ,
 "sprite": ,
-
 }
+
+{
+"objectType": "InteractableObj":
+"positionX": 120,
+"positionY": 200,
+"width": 500,
+"height": 300,
+"sprite": "mySprite.spr",
+}
+
+{
+"objectType": "InteractableObj":
+"positionX": 0,
+"positionY": 0,
+"width": 10000,
+"height": 500,
+"sprite": "mySprite1.spr",
+}
+
+
+{
+"objectType": "Weapon",
+"positionX": ,
+"positionY": ,
+"width": ,
+"height": ,
+"sprite": ,
+}
+
+
+{
+"objectType": "projectileObj",
+"positionX": ,
+"positionY": ,
+"width": ,
+"height": ,
+"sprite": ,
+}
+
+
