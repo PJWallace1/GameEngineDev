@@ -82,8 +82,9 @@
 
 {
 "objectType": "projectileObj",
-"positionX": ,
-"positionY": ,
+"speed",
+"maxSpeed"
+"direction"
 "width": ,
 "height": ,
 "sprite": ,
