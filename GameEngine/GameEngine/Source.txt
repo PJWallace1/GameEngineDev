@@ -1,0 +1,19 @@
+{
+"object": "Player",
+"positionX": 100 ,
+"positionY": 50 ,
+"width": 3,
+"height": 7,
+"HP": 100,
+"ability":0,
+"sprite": ,
+}
+
+{
+"object": "Wall":
+"positionX": 200 ,
+"positionY": 50,
+"width": 50,
+"height":10,
+"sprite": ,
+}

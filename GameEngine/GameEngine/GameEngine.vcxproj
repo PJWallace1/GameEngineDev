@@ -125,14 +125,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="enemy.cpp" />
+    <ClCompile Include="environmentObj.cpp" />
     <ClCompile Include="function.cpp" />
+    <ClCompile Include="interactableObj.cpp" />
+    <ClCompile Include="jsonreader.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Obj.cpp" />
     <ClCompile Include="PhysicsEngine.cpp" />
     <ClCompile Include="player.cpp" />
+    <ClCompile Include="projectileObj.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="save.txt" />
+    <Text Include="Source.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

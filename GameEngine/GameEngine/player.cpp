@@ -23,6 +23,22 @@ public:
 		this->h = _h;
 	}
 
+	int getX() {
+		return posX;
+	}
+
+	void setX(int posX) {
+		this->posX = posX;
+	}
+
+	int getY() {
+		return posY;
+	}
+
+	void setY(int posY) {
+		this->posY = posY;
+	}
+
 	int getHP() {
 		return hp;
 	}
