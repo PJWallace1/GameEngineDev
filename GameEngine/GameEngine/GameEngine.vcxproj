@@ -140,6 +140,13 @@
     <Text Include="save.txt" />
     <Text Include="Source.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="environmentObj.h" />
+    <ClInclude Include="jsonreader.h" />
+    <ClInclude Include="Obj.h" />
+    <ClInclude Include="PhysicsEngine.h" />
+    <ClInclude Include="player.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

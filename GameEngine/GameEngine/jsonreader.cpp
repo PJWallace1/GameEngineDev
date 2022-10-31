@@ -1,26 +1,127 @@
-#include <iostream>
-#include "Obj.cpp"
-#include <fstream>
+#include "jsonreader.h"
 
-using namespace std;
 
-class JSONReader {
-
-	JSONReader() {
+	JSONReader::JSONReader() {
 
 	}
 
-	Obj read() {
+  string JSONReader::stripSpaces(string input) {
+    string output = "";
+    for (int i = 0; i < input.length(); i++) {
+      if (input[i] != ' ') { output += input[i]; }
+    }
+    return output;
+  }
+
+  string JSONReader::parseForString(string input) {
+    string output = "";
+    int i = 0;
+    input = stripSpaces(input);
+    if (input.length() > 0) {
+      while (input[i] != ':') {
+        i++;
+      }
+      i+=2;
+      for (int j = i; j < input.length() - 2; j++) {
+        output += input[j];
+      }
+    }
+    return output;
+  }
+
+  int JSONReader::parseForInt(string input) {
+    string output = "";
+    int i = 0;
+    input = stripSpaces(input);
+    if (input.length() > 0) {
+      while (input[i] != ':') {
+        i++;
+      }
+      i++;
+      for (int j = i; j < input.length() - 1; j++) {
+        output += input[j];
+      }
+    }
+    return stoi(output);
+  }
+
+  float JSONReader::parseForFloat(string input) {
+    string output = "";
+    int i = 0;
+    input = stripSpaces(input);
+    if (input.length() > 0) {
+      while (input[i] != ':') {
+        i++;
+      }
+      i++;
+      for (int j = i; j < input.length() - 1; j++) {
+        output += input[j];
+      }
+    }
+    return stof(output);
+  }
+
+	vector<Obj*> JSONReader::read(vector<Obj*>& objects, vector<Obj*>& renderable, vector<Obj*>& collidable, vector<Obj*>& movable) {
 		ifstream in;
-		string inputLine;
+		string inputLine, objType;
+    vector<Obj*> createdObjs;
 
 		in.open("Source.txt");
 
 		if (in.is_open()) {
 
 			while(getline(in, inputLine)){
+        //cout << stripSpaces(inputLine) << endl;
 				if (inputLine == "{") {
 					getline(in, inputLine);
+          objType = parseForString(inputLine);
+          if (objType == "Player") {
+            double x, y, w, h;
+            int hp;
+            abilityType a;
+            string spr;
+
+            getline(in, inputLine);
+            x = parseForFloat(inputLine);
+            getline(in, inputLine);
+            y = parseForFloat(inputLine);
+            getline(in, inputLine);
+            w = parseForFloat(inputLine);
+            getline(in, inputLine);
+            h = parseForFloat(inputLine);
+            getline(in, inputLine);
+            hp = parseForInt(inputLine);
+            getline(in, inputLine);
+            a = static_cast<abilityType>(parseForInt(inputLine));
+            getline(in, inputLine);
+            spr = parseForString(inputLine);
+
+            objects.push_back(new Player(x, y, w, h, hp, a, spr));
+            renderable.push_back(new Player(x, y, w, h, hp, a, spr));
+            collidable.push_back(new Player(x, y, w, h, hp, a, spr));
+            movable.push_back(new Player(x, y, w, h, hp, a, spr));
+
+          }
+          else if (objType == "environmentObj") {
+            double x, y, w, h;
+            string spr;
+
+            getline(in, inputLine);
+            x = parseForFloat(inputLine);
+            getline(in, inputLine);
+            y = parseForFloat(inputLine);
+            getline(in, inputLine);
+            w = parseForFloat(inputLine);
+            getline(in, inputLine);
+            h = parseForFloat(inputLine);
+            getline(in, inputLine);
+            spr = parseForString(inputLine);
+
+            objects.push_back(new environmentObj(x, y, w, h, spr));
+            collidable.push_back(new environmentObj(x, y, w, h, spr));
+            renderable .push_back(new environmentObj(x, y, w, h, spr));
+
+          }
 				}
 				
 
@@ -29,5 +130,6 @@ class JSONReader {
 		else {
 			cout << "Error, file not open." << endl;
 		}
+
+    return createdObjs;
 	}
-};

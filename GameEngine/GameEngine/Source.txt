@@ -1,19 +1,19 @@
 {
 "object": "Player",
-"positionX": 100 ,
-"positionY": 50 ,
-"width": 3,
-"height": 7,
+"positionX": 10 ,
+"positionY": 20 ,
+"width": 100,
+"height": 50,
 "HP": 100,
 "ability":0,
-"sprite": ,
+"sprite": "mySprite.txt",
 }
 
 {
-"object": "Wall":
-"positionX": 200 ,
-"positionY": 50,
-"width": 50,
-"height":10,
+"object": "environmentObj":
+"positionX": 300 ,
+"positionY": 300,
+"width": 100,
+"height":50,
 "sprite": ,
 }

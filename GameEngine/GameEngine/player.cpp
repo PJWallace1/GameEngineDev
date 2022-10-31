@@ -1,61 +1,44 @@
-#include <SFML/Graphics.hpp>
+#include "player.h"
 
-enum abilityType { heal, speed, strength };
 
-class Player {
-private:
-	int posX, posY;
-	int id;
-	float w, h;
-	int hp, speed, atkPow;
-	abilityType ability;
+Player::Player(float _x, float _y, float _w, float _h, int _hp, abilityType _a, string _spr):Obj(_x, _y, _w, _h) {
+  ability = _a;
+  hp = _hp;
+  sprite = _spr;
+}
 
-	sf::RectangleShape r;
+float Player::getX() {
+	return x;
+}
 
-public:
-	Player(sf::RectangleShape rec, int x, int y, float _w, float _h) {
-		static int curID = 0;
-		id = curID++;
-		r = rec;
-		posX = x;
-		posY = y;
-		this->w = _w;
-		this->h = _h;
-	}
+void Player::setX(float posX) {
+	this->x = posX;
+}
 
-	int getX() {
-		return posX;
-	}
+float Player::getY() {
+	return y;
+}
 
-	void setX(int posX) {
-		this->posX = posX;
-	}
+void Player::setY(float posY) {
+	this->y = posY;
+}
 
-	int getY() {
-		return posY;
-	}
+int Player::getHP() {
+	return hp;
+}
 
-	void setY(int posY) {
-		this->posY = posY;
-	}
+void Player::setHP(int hp) {
+	this->hp = hp;
+}
 
-	int getHP() {
-		return hp;
-	}
+abilityType Player::getAbility() {
+	return ability;
+}
 
-	void setHP(int hp) {
-		this->hp = hp;
-	}
+void Player::setAbility(abilityType ability) {
+	this->ability = ability;
+}
 
-	abilityType getAbility() {
-		return ability;
-	}
-
-	void setAbility(abilityType ability) {
-		this->ability = ability;
-	}
-
-	bool operator== (const Player& other) {
-		return id == other.id;
-	}
-};
+bool Player::operator== (const Player& other) {
+	return id == other.id;
+}

@@ -1,7 +1,8 @@
 #include <map>
 #include <iostream>
 #include <queue>
-#include "PhysicsEngine.cpp"
+#include "PhysicsEngine.h"
+#include "jsonreader.h"
 
 
 //Window dimensions
@@ -13,7 +14,7 @@ const int FPS_LIMIT = 60;
 const float PLAYER_SPEED = 2;
 
 using namespace sf;
-
+/*
 Obj createPlayer() {
   int x = 10, y = 20;
   RectangleShape rectangle;
@@ -35,10 +36,10 @@ Obj createWall() {
   rectangle.setFillColor(Color::Blue);
   return Obj(rectangle, x, y);
 }
-
-/*
-  loops from the objects in the renderable array and draws them to the screen
 */
+
+//loops from the objects in the renderable array and draws them to the screen
+
 void renderScreen(sf::RenderWindow &window, std::vector<Obj*>& renderable) {
   for (Obj* o : renderable) {
     window.draw((*o).r);
@@ -68,16 +69,20 @@ int main()
   keyBinds[3]  = moveRight; //D
 
   PhysicsEngine pe;
+  JSONReader j;
 
   //A queue for processing method calls from key presses
   std::queue<MethodNames> processes;
 
+  j.read(objects, renderable, collidable, movable);
+
   //Create a rectangle which represents the player
-  Obj player = createPlayer();
+  Obj player = *(objects[0]);
 
   //Create a rectangle which represents a wall
-  Obj wall = createWall();
+  //Obj wall = createWall();
 
+  /*
   objects.push_back(&player);
   objects.push_back(&wall);
   renderable.push_back(&player);
@@ -85,6 +90,9 @@ int main()
   collidable.push_back(&player);
   collidable.push_back(&wall);
   movable.push_back(&player);
+  */
+
+
 
 
   while (window.isOpen())
@@ -148,3 +156,16 @@ int main()
 
   return 0;
 }
+/*
+int main() {
+
+  JSONReader j;
+  vector<Obj*> objs;
+
+  objs = j.read();
+
+  cout << "Done" << endl;
+
+  return 0;
+}
+*/

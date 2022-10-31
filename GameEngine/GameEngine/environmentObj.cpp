@@ -1,42 +1,25 @@
-#include <SFML/Graphics.hpp>
+#include "environmentObj.h"
 
-
-class environmentObj {
-private:
-	int posX, posY;
-	int id;
-	float w, h;
-
-	sf::RectangleShape r;
-
-public:
-	environmentObj(sf::RectangleShape rec, int x, int y, float _w, float _h) {
-		static int curID = 0;
-		id = curID++;
-		r = rec;
-		posX = x;
-		posY = y;
-		this->w = _w;
-		this->h = _h;
+	environmentObj::environmentObj(float _x, float _y, float _w, float _h, string spr):Obj(_x, _y, _w, _h) {
+    sprite = spr;
 	}
 
-	int getX() {
-		return posX;
+	float environmentObj::getX() {
+		return x;
 	}
 
-	void setX(int posX) {
-		this->posX = posX;
+	void environmentObj::setX(float posX) {
+		this->x = posX;
 	}
 
-	int getY() {
-		return posY;
+	float environmentObj::getY() {
+		return y;
 	}
 
-	void setY(int posY) {
-		this->posY = posY;
+	void environmentObj::setY(float posY) {
+		this->y = posY;
 	}
 
-	bool operator== (const environmentObj& other) {
+	bool environmentObj::operator== (const environmentObj& other) {
 		return id == other.id;
 	}
-};
