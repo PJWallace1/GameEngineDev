@@ -1,2 +1,15 @@
-﻿  main.cpp
+﻿  jsonreader.cpp
+c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\jsonreader.cpp(10): warning C4018: '<': signed/unsigned mismatch
+c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\jsonreader.cpp(25): warning C4018: '<': signed/unsigned mismatch
+c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\jsonreader.cpp(41): warning C4018: '<': signed/unsigned mismatch
+c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\jsonreader.cpp(57): warning C4018: '<': signed/unsigned mismatch
+c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\jsonreader.cpp(99): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\jsonreader.cpp(100): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\jsonreader.cpp(101): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\jsonreader.cpp(102): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\jsonreader.cpp(120): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\jsonreader.cpp(121): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\jsonreader.cpp(122): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  main.cpp
+  Generating Code...
   GameEngine.vcxproj -> C:\Users\garde\Desktop\School\Software Engineering\Git\GameEngineDev\GameEngine\Debug\GameEngine.exe

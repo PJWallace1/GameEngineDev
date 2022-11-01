@@ -1,7 +1,9 @@
 #include <map>
 #include <iostream>
 #include <queue>
-#include "PhysicsEngine.cpp"
+#include "PhysicsEngine.h"
+#include "jsonreader.h"
+
 
 //Window dimensions
 const int WINOW_W = 1000;
@@ -12,7 +14,37 @@ const int FPS_LIMIT = 60;
 const float PLAYER_SPEED = 2;
 
 using namespace sf;
-using namespace std;
+/*
+Obj createPlayer() {
+  int x = 10, y = 20;
+  RectangleShape rectangle;
+  rectangle.setSize(sf::Vector2f(100, 50));
+  rectangle.setOutlineColor(sf::Color::Red);
+  rectangle.setOutlineThickness(5);
+  rectangle.setPosition(10, 20);
+  rectangle.setFillColor(Color::Green);
+  return Obj(rectangle, x, y);
+}
+
+Obj createWall() {
+  int x = 300, y = 300; 
+  RectangleShape rectangle;
+  rectangle.setSize(sf::Vector2f(100, 50));
+  rectangle.setOutlineColor(sf::Color::Yellow);
+  rectangle.setOutlineThickness(5);
+  rectangle.setPosition(300, 300);
+  rectangle.setFillColor(Color::Blue);
+  return Obj(rectangle, x, y);
+}
+*/
+
+//loops from the objects in the renderable array and draws them to the screen
+
+void renderScreen(sf::RenderWindow &window, std::vector<Obj*>& renderable) {
+  for (Obj* o : renderable) {
+    window.draw((*o).r);
+  }
+}
 
 int main()
 {
@@ -20,13 +52,11 @@ int main()
   RenderWindow window(VideoMode(WINOW_W, WINDOW_H), "Game Engine");
   window.setFramerateLimit(FPS_LIMIT);
 
-  //Create a rectangle which represents the player
-  RectangleShape rectangle;
-  rectangle.setSize(sf::Vector2f(100, 50));
-  rectangle.setOutlineColor(sf::Color::Red);
-  rectangle.setOutlineThickness(5);
-  rectangle.setPosition(10, 20);
-  rectangle.setFillColor(Color::Green);
+  //Object vectors
+  std::vector<Obj*> objects; //gameObjects
+  std::vector<Obj*> renderable; //renderable
+  std::vector<Obj*> collidable; //collidable
+  std::vector<Obj*> movable; //movable
 
   //An enum representing the possible methods a user can call through key presses
   enum MethodNames { null = -1, moveUp = 0, moveDown, moveRight, moveLeft };
@@ -38,8 +68,31 @@ int main()
   keyBinds[18] = moveDown;  //S
   keyBinds[3]  = moveRight; //D
 
+  PhysicsEngine pe;
+  JSONReader j;
+
   //A queue for processing method calls from key presses
-  queue<MethodNames> processes;
+  std::queue<MethodNames> processes;
+
+  j.read(objects, renderable, collidable, movable);
+
+  //Create a rectangle which represents the player
+  Obj player = *(objects[0]);
+
+  //Create a rectangle which represents a wall
+  //Obj wall = createWall();
+
+  /*
+  objects.push_back(&player);
+  objects.push_back(&wall);
+  renderable.push_back(&player);
+  renderable.push_back(&wall);
+  collidable.push_back(&player);
+  collidable.push_back(&wall);
+  movable.push_back(&player);
+  */
+
+
 
 
   while (window.isOpen())
@@ -69,20 +122,22 @@ int main()
       }
     }
     //Process the method calls in the queue
+    player.x = player.r.getPosition().x;
+    player.y = player.r.getPosition().y;
     while (!processes.empty()) {
       switch(processes.front())
       {
       case moveUp:
-        PhysicsEngine::moveUp(PLAYER_SPEED, rectangle);
+        pe.moveUp(PLAYER_SPEED, player);
         break;
       case moveDown:
-        PhysicsEngine::moveDown(PLAYER_SPEED, rectangle);
+        pe.moveDown(PLAYER_SPEED, player);
         break;
       case moveLeft:
-        PhysicsEngine::moveLeft(PLAYER_SPEED, rectangle);
+        pe.moveLeft(PLAYER_SPEED, player);
         break;
       case moveRight:
-        PhysicsEngine::moveRight(PLAYER_SPEED, rectangle);
+        pe.moveRight(PLAYER_SPEED, player);
         break;
       default:
         break;
@@ -90,10 +145,27 @@ int main()
       processes.pop();
     }
 
+    pe.calculateCollisions(collidable);
+
+    pe.moveObjects(movable);
+
     window.clear();
-    window.draw(rectangle);
+    renderScreen(window, renderable);
     window.display();
   }
 
   return 0;
 }
+/*
+int main() {
+
+  JSONReader j;
+  vector<Obj*> objs;
+
+  objs = j.read();
+
+  cout << "Done" << endl;
+
+  return 0;
+}
+*/

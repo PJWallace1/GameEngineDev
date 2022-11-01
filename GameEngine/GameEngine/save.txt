@@ -1,0 +1,93 @@
+{
+"objectType": "Player",
+"positionX": ,
+"positionY": ,
+"width": ,
+"height": ,
+"HP": ,
+"ability": ,
+"sprite": ,
+"primaryWeapon": ,
+"secondaryWeapon": ,
+"Throwable": ,
+"meleeWeapon": ,
+"heal": ,
+"gold": ,
+}
+
+
+{
+"objectType": "Enemy",
+"positionX": ,
+"positionY": ,
+"width": ,
+"height": ,
+"HP": ,
+"ability": ,
+"sprite": ,
+"Weapon": ,
+}
+
+
+
+{
+"objectType": "EnvironmentObj":
+"positionX": ,
+"positionY": ,
+"width": ,
+"height": ,
+"sprite": ,
+
+}
+
+
+
+{
+"objectType": "InteractableObj":
+"positionX": ,
+"positionY": ,
+"width": ,
+"height": ,
+"sprite": ,
+}
+
+{
+"objectType": "InteractableObj":
+"positionX": 120,
+"positionY": 200,
+"width": 500,
+"height": 300,
+"sprite": "mySprite.spr",
+}
+
+{
+"objectType": "InteractableObj":
+"positionX": 0,
+"positionY": 0,
+"width": 10000,
+"height": 500,
+"sprite": "mySprite1.spr",
+}
+
+
+{
+"objectType": "Weapon",
+"positionX": ,
+"positionY": ,
+"width": ,
+"height": ,
+"sprite": ,
+}
+
+
+{
+"objectType": "projectileObj",
+"speed",
+"maxSpeed"
+"direction"
+"width": ,
+"height": ,
+"sprite": ,
+}
+
+
