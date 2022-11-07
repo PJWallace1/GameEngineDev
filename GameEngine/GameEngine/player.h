@@ -5,28 +5,23 @@ enum abilityType { heal, speed, strength };
 
 class Player : public Obj {
 private:
-  int hp, speed, atkPow;
+  int hp, atkPow;
   abilityType ability;
   string sprite;
 
 public:
   Player(float _x, float _y, float _w, float _h, int _hp, abilityType _a, string _spr);
 
-  float getX();
+  int getHP() { return hp; }
 
-  void setX(float posX);
+  void setHP(int _hp) { hp = _hp; }
 
-  float getY();
+  abilityType getAbility() { return ability; }
 
-  void setY(float posY);
+  void setAbility(abilityType _ability) { ability = _ability; }
 
-  int getHP();
-
-  void setHP(int hp);
-
-  abilityType getAbility();
-
-  void setAbility(abilityType ability);
+  string getSprite() { return sprite; }
+  void setSprite(string _sprite) { sprite = _sprite;  }
 
   bool operator== (const Player& other);
 };

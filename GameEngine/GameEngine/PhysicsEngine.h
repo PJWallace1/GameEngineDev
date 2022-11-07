@@ -12,7 +12,7 @@ private:
   bool checkCollision(Obj& o);
 
 public:
-  void moveUp(float numPix, Obj& o);
+  void moveUp(float numPix, Obj* o);
   void moveLeft(float numPix, Obj& o);
   void moveDown(float numPix, Obj& o);
   void moveRight(float numPix, Obj& o);

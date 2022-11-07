@@ -55,20 +55,20 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Obj.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="environmentObj.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="jsonreader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PhysicsEngine.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="jsonreader.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="environmentObj.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

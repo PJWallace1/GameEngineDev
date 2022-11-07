@@ -12,3 +12,7 @@ Obj::Obj(float _x, float _y, float _w, float _h) {
 bool Obj::operator== (const Obj& other) {
   return id == other.id;
 }
+
+void Obj::moveR(float x, float y) {
+  r.move(x, y);
+}

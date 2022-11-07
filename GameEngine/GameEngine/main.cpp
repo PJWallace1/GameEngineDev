@@ -4,7 +4,6 @@
 #include "PhysicsEngine.h"
 #include "jsonreader.h"
 
-
 //Window dimensions
 const int WINOW_W = 1000;
 const int WINDOW_H = 1000;
@@ -13,36 +12,15 @@ const int FPS_LIMIT = 60;
 //Players default speed
 const float PLAYER_SPEED = 2;
 
-using namespace sf;
-/*
-Obj createPlayer() {
-  int x = 10, y = 20;
-  RectangleShape rectangle;
-  rectangle.setSize(sf::Vector2f(100, 50));
-  rectangle.setOutlineColor(sf::Color::Red);
-  rectangle.setOutlineThickness(5);
-  rectangle.setPosition(10, 20);
-  rectangle.setFillColor(Color::Green);
-  return Obj(rectangle, x, y);
-}
+const int PLYR = 0;
 
-Obj createWall() {
-  int x = 300, y = 300; 
-  RectangleShape rectangle;
-  rectangle.setSize(sf::Vector2f(100, 50));
-  rectangle.setOutlineColor(sf::Color::Yellow);
-  rectangle.setOutlineThickness(5);
-  rectangle.setPosition(300, 300);
-  rectangle.setFillColor(Color::Blue);
-  return Obj(rectangle, x, y);
-}
-*/
+using namespace sf;
 
 //loops from the objects in the renderable array and draws them to the screen
 
 void renderScreen(sf::RenderWindow &window, std::vector<Obj*>& renderable) {
   for (Obj* o : renderable) {
-    window.draw((*o).r);
+    window.draw((*o).getR());
   }
 }
 
@@ -74,27 +52,14 @@ int main()
   //A queue for processing method calls from key presses
   std::queue<MethodNames> processes;
 
+  
   j.read(objects, renderable, collidable, movable);
 
-  //Create a rectangle which represents the player
-  Obj player = *(objects[0]);
 
   //Create a rectangle which represents a wall
   //Obj wall = createWall();
 
-  /*
-  objects.push_back(&player);
-  objects.push_back(&wall);
-  renderable.push_back(&player);
-  renderable.push_back(&wall);
-  collidable.push_back(&player);
-  collidable.push_back(&wall);
-  movable.push_back(&player);
-  */
-
-
-
-
+  
   while (window.isOpen())
   {
     Event event;
@@ -122,22 +87,22 @@ int main()
       }
     }
     //Process the method calls in the queue
-    player.x = player.r.getPosition().x;
-    player.y = player.r.getPosition().y;
+    objects[PLYR]->setX(objects[PLYR]->getR().getPosition().x);
+    objects[PLYR]->setY(objects[PLYR]->getR().getPosition().y);
     while (!processes.empty()) {
       switch(processes.front())
       {
       case moveUp:
-        pe.moveUp(PLAYER_SPEED, player);
+        pe.moveUp(PLAYER_SPEED, objects[PLYR]);
         break;
       case moveDown:
-        pe.moveDown(PLAYER_SPEED, player);
+        pe.moveDown(PLAYER_SPEED, *objects[PLYR]);
         break;
       case moveLeft:
-        pe.moveLeft(PLAYER_SPEED, player);
+        pe.moveLeft(PLAYER_SPEED, *objects[PLYR]);
         break;
       case moveRight:
-        pe.moveRight(PLAYER_SPEED, player);
+        pe.moveRight(PLAYER_SPEED, *objects[PLYR]);
         break;
       default:
         break;
@@ -156,15 +121,26 @@ int main()
 
   return 0;
 }
+
 /*
 int main() {
 
+  //stuff 1
   JSONReader j;
   vector<Obj*> objs;
 
   objs = j.read();
 
   cout << "Done" << endl;
+
+  //stuff 2
+  sf::RectangleShape a, b;
+
+  b.setPosition(20, 30);
+
+  a = b;
+
+  b.setPosition(1, 2);
 
   return 0;
 }

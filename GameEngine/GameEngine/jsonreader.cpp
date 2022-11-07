@@ -96,10 +96,12 @@
             getline(in, inputLine);
             spr = parseForString(inputLine);
 
-            objects.push_back(new Player(x, y, w, h, hp, a, spr));
-            renderable.push_back(new Player(x, y, w, h, hp, a, spr));
-            collidable.push_back(new Player(x, y, w, h, hp, a, spr));
-            movable.push_back(new Player(x, y, w, h, hp, a, spr));
+            Player *p = new Player(x, y, w, h, hp, a, spr);
+
+            objects.push_back(p);
+            renderable.push_back(p);
+            collidable.push_back(p);
+            movable.push_back(p);
 
           }
           else if (objType == "environmentObj") {
@@ -117,9 +119,11 @@
             getline(in, inputLine);
             spr = parseForString(inputLine);
 
-            objects.push_back(new environmentObj(x, y, w, h, spr));
-            collidable.push_back(new environmentObj(x, y, w, h, spr));
-            renderable .push_back(new environmentObj(x, y, w, h, spr));
+            environmentObj *e = new environmentObj(x, y, w, h, spr);
+
+            objects.push_back(e);
+            collidable.push_back(e);
+            renderable .push_back(e);
 
           }
 				}
