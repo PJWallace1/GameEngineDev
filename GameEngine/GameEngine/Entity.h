@@ -4,7 +4,7 @@
 
 enum Speed { SLOW = 2, MEDIUM = 4, FAST = 8};
 
-enum AbilityType { heal, speed, strength };
+enum AbilityType { HEAL, SPEED, STRENGTH };
 
 class Entity : public VisibleObj
 {
@@ -15,7 +15,7 @@ protected:
   Speed speed;
 
 public:
-  Entity(float _x, float _y, float _w, float _h, string _sprite, int _hp, AbilityType _ability, Weapon *_weapon);
+  Entity(float _x, float _y, float _w, float _h, string _sprite, int _hp, AbilityType _ability, Speed _speed, Weapon *_weapon);
 
   int getHP() { return hp; }
   AbilityType getAbility() { return ability; }

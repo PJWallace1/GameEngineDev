@@ -4,13 +4,15 @@
 class Weapon : public Obj
 {
  protected:
-  //Projectile p;
   int ammoCount;
   sf::Clock reloadClock;
   int reloadTime;
+  int damage;
+
+  float shotSpeed;
 
 public:
-  Weapon();
+  Weapon(int _ammoCount, int _reloadTime, int _damage, float _shotSpeed);
   void fire(float mouseX, float mouseY);
 };
 

@@ -1,2 +1,14 @@
-﻿  VisibleObj.cpp
+﻿  Enemy.cpp
+  Entity.cpp
+  JsonReader.cpp
+c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\jsonreader.cpp(10): warning C4018: '<': signed/unsigned mismatch
+c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\jsonreader.cpp(25): warning C4018: '<': signed/unsigned mismatch
+c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\jsonreader.cpp(41): warning C4018: '<': signed/unsigned mismatch
+c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\jsonreader.cpp(57): warning C4018: '<': signed/unsigned mismatch
+  PhysicsEngine.cpp
+c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\physicsengine.cpp(34): warning C4018: '<': signed/unsigned mismatch
+c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\physicsengine.cpp(35): warning C4018: '<': signed/unsigned mismatch
+  Player.cpp
+  main.cpp
+  Generating Code...
   GameEngine.vcxproj -> C:\Users\garde\Desktop\School\Software Engineering\Git\GameEngineDev\GameEngine\Debug\GameEngine.exe
