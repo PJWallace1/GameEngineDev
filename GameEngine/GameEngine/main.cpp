@@ -18,9 +18,9 @@ using namespace sf;
 
 //loops from the objects in the renderable array and draws them to the screen
 
-void renderScreen(sf::RenderWindow &window, std::vector<Obj*>& renderable) {
-  for (Obj* o : renderable) {
-    window.draw((*o).getR());
+void renderScreen(sf::RenderWindow &window, std::vector<VisibleObj*>& renderable) {
+  for (VisibleObj* o : renderable) {
+    (*o).draw(window);
   }
 }
 
@@ -32,9 +32,9 @@ int main()
 
   //Object vectors
   std::vector<Obj*> objects; //gameObjects
-  std::vector<Obj*> renderable; //renderable
-  std::vector<Obj*> collidable; //collidable
-  std::vector<Obj*> movable; //movable
+  std::vector<VisibleObj*> renderable; //renderable
+  std::vector<Tangible*> collidable; //collidable
+  std::vector<Tangible*> movable; //movable
 
   //An enum representing the possible methods a user can call through key presses
   enum MethodNames { null = -1, moveUp = 0, moveDown, moveRight, moveLeft };
@@ -48,12 +48,15 @@ int main()
 
   PhysicsEngine pe;
   JSONReader j;
+  Player *player;
 
   //A queue for processing method calls from key presses
   std::queue<MethodNames> processes;
 
   
   j.read(objects, renderable, collidable, movable);
+
+  player = dynamic_cast<Player*>(objects[PLYR]);
 
 
   //Create a rectangle which represents a wall
@@ -87,22 +90,22 @@ int main()
       }
     }
     //Process the method calls in the queue
-    objects[PLYR]->setX(objects[PLYR]->getR().getPosition().x);
-    objects[PLYR]->setY(objects[PLYR]->getR().getPosition().y);
+    player->setX(player->getR().getPosition().x);
+    player->setY(player->getR().getPosition().y);
     while (!processes.empty()) {
       switch(processes.front())
       {
       case moveUp:
-        pe.moveUp(PLAYER_SPEED, objects[PLYR]);
+        pe.moveUp(PLAYER_SPEED, *player);
         break;
       case moveDown:
-        pe.moveDown(PLAYER_SPEED, *objects[PLYR]);
+        pe.moveDown(PLAYER_SPEED, *player);
         break;
       case moveLeft:
-        pe.moveLeft(PLAYER_SPEED, *objects[PLYR]);
+        pe.moveLeft(PLAYER_SPEED, *player);
         break;
       case moveRight:
-        pe.moveRight(PLAYER_SPEED, *objects[PLYR]);
+        pe.moveRight(PLAYER_SPEED, *player);
         break;
       default:
         break;
@@ -117,6 +120,10 @@ int main()
     window.clear();
     renderScreen(window, renderable);
     window.display();
+  }
+
+  for (Obj *o : objects) {
+    delete o;
   }
 
   return 0;

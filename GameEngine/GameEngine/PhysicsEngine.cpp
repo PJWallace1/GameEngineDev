@@ -1,7 +1,7 @@
 #include "PhysicsEngine.h"
 
-bool PhysicsEngine::checkCollision(Obj& o) {
-  for (std::pair<Obj*, Obj*> p : collisions) {
+bool PhysicsEngine::checkCollision(Tangible& o) {
+  for (std::pair<Tangible*, Tangible*> p : collisions) {
     if ((*p.first).getId() == o.getId() || (*p.second).getId() == o.getId()) {
       return true;
     }
@@ -10,14 +10,14 @@ bool PhysicsEngine::checkCollision(Obj& o) {
 }
 
 
-void PhysicsEngine::moveUp(float numPix, Obj* o) { (*o).moveR(0.f, -1 * numPix); }
-void PhysicsEngine::moveLeft(float numPix, Obj& o) { o.moveR(-1 * numPix, 0.f); }
-void PhysicsEngine::moveDown(float numPix, Obj& o) { o.moveR(0.f, numPix); }
-void PhysicsEngine::moveRight(float numPix, Obj& o) { o.moveR(numPix, 0.f); }
+void PhysicsEngine::moveUp(float numPix, Tangible& o) { o.moveR(0.f, -1 * numPix); }
+void PhysicsEngine::moveLeft(float numPix, Tangible& o) { o.moveR(-1 * numPix, 0.f); }
+void PhysicsEngine::moveDown(float numPix, Tangible& o) { o.moveR(0.f, numPix); }
+void PhysicsEngine::moveRight(float numPix, Tangible& o) { o.moveR(numPix, 0.f); }
 
 
-void PhysicsEngine::moveObjects(std::vector<Obj *>& movable) {
-  for (Obj* o : movable) {
+void PhysicsEngine::moveObjects(std::vector<Tangible *>& movable) {
+  for (Tangible* o : movable) {
     if (checkCollision(*o)) {
       (*o).setRPosition((*o).getX(), (*o).getY());
     }
@@ -28,7 +28,7 @@ void PhysicsEngine::moveObjects(std::vector<Obj *>& movable) {
   }
 }
 
-void PhysicsEngine::calculateCollisions(std::vector<Obj *>& collidable) {
+void PhysicsEngine::calculateCollisions(std::vector<Tangible *>& collidable) {
   collisions.clear();
   //Loop through array and compare all values to eachother
   for (int i = 0; i < collidable.size(); i++) {
@@ -36,7 +36,7 @@ void PhysicsEngine::calculateCollisions(std::vector<Obj *>& collidable) {
       //If the objects intersect
       if ((*collidable[i]).getR().getGlobalBounds().intersects((*collidable[j]).getR().getGlobalBounds())) {
         //Put the collision in a vector
-        collisions.push_back(std::pair<Obj*, Obj*>(collidable[i], collidable[j]));
+        collisions.push_back(std::pair<Tangible*, Tangible*>(collidable[i], collidable[j]));
       }
     }
   }

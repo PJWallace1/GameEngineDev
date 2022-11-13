@@ -1,6 +1,7 @@
+#pragma once
 #include <iostream>
-#include "player.h"
-#include "environmentObj.h"
+#include "Player.h"
+#include "EnvironmentObj.h"
 #include <fstream>
 
 using namespace std;
@@ -18,5 +19,5 @@ public:
   float parseForFloat(string input);
 
   //returns obj
-  vector<Obj*> read(vector<Obj*>& objects, vector<Obj*>& renderable, vector<Obj*>& collidable, vector<Obj*>& movable);
+  vector<Obj*> read(vector<Obj*>& objects, vector<VisibleObj*>& renderable, vector<Tangible*>& collidable, vector<Tangible*>& movable);
 };

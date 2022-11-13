@@ -61,7 +61,7 @@
     return stof(output);
   }
 
-	vector<Obj*> JSONReader::read(vector<Obj*>& objects, vector<Obj*>& renderable, vector<Obj*>& collidable, vector<Obj*>& movable) {
+	vector<Obj*> JSONReader::read(vector<Obj*>& objects, vector<VisibleObj*>& renderable, vector<Tangible*>& collidable, vector<Tangible*>& movable) {
 		ifstream in;
 		string inputLine, objType;
     vector<Obj*> createdObjs;
@@ -78,7 +78,7 @@
           if (objType == "Player") {
             double x, y, w, h;
             int hp;
-            abilityType a;
+            AbilityType a;
             string spr;
 
             getline(in, inputLine);
@@ -92,11 +92,12 @@
             getline(in, inputLine);
             hp = parseForInt(inputLine);
             getline(in, inputLine);
-            a = static_cast<abilityType>(parseForInt(inputLine));
+            a = static_cast<AbilityType>(parseForInt(inputLine));
             getline(in, inputLine);
             spr = parseForString(inputLine);
+            
 
-            Player *p = new Player(x, y, w, h, hp, a, spr);
+            Player *p = new Player(x, y, w, h, spr, hp, a, new Weapon(), 0);
 
             objects.push_back(p);
             renderable.push_back(p);
@@ -119,7 +120,7 @@
             getline(in, inputLine);
             spr = parseForString(inputLine);
 
-            environmentObj *e = new environmentObj(x, y, w, h, spr);
+            EnvironmentObj *e = new EnvironmentObj(x, y, w, h, spr);
 
             objects.push_back(e);
             collidable.push_back(e);

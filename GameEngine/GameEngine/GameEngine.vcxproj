@@ -125,27 +125,38 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="enemy.cpp" />
-    <ClCompile Include="environmentObj.cpp" />
-    <ClCompile Include="function.cpp" />
-    <ClCompile Include="interactableObj.cpp" />
-    <ClCompile Include="jsonreader.cpp" />
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="EnviornmentObj.cpp" />
+    <ClCompile Include="Function.cpp" />
+    <ClCompile Include="InteractableObj.cpp" />
+    <ClCompile Include="JsonReader.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Obj.cpp" />
     <ClCompile Include="PhysicsEngine.cpp" />
-    <ClCompile Include="player.cpp" />
-    <ClCompile Include="projectileObj.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Projectile.cpp" />
+    <ClCompile Include="Tangible.cpp" />
+    <ClCompile Include="VisibleObj.cpp" />
+    <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="save.txt" />
     <Text Include="Source.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="environmentObj.h" />
-    <ClInclude Include="jsonreader.h" />
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Entity.h" />
+    <ClInclude Include="EnvironmentObj.h" />
+    <ClInclude Include="InteractableObj.h" />
+    <ClInclude Include="JsonReader.h" />
     <ClInclude Include="Obj.h" />
     <ClInclude Include="PhysicsEngine.h" />
-    <ClInclude Include="player.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Projectile.h" />
+    <ClInclude Include="Tangible.h" />
+    <ClInclude Include="VisibleObj.h" />
+    <ClInclude Include="Weapon.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
