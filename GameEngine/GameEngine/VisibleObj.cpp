@@ -1,9 +1,23 @@
 #include "VisibleObj.h"
 
 VisibleObj::VisibleObj(float _x, float _y, float _w, float _h, string _sprite):Tangible(_x, _y, _w, _h) {
+  if (texture.loadFromFile(_sprite)) {
+    sprite.setTexture(texture);
+    isTexture = true;
+  }
+  else {
+    isTexture = false;
+  }
 
 }
 
 void VisibleObj::draw(sf::RenderWindow &window) {
-  window.draw(r);
+  if (isTexture) {
+    sprite.setPosition(r.getPosition());
+    window.draw(sprite);
+  }
+  else {
+    window.draw(r);
+  }
+  
 }

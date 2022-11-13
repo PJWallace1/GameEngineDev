@@ -6,7 +6,7 @@
 "height": 50,
 "HP": 100,
 "ability":0,
-"sprite": "mySprite.txt",
+"sprite": "spr_yellow.png",
 }
 
 {
@@ -15,5 +15,5 @@
 "positionY": 303,
 "width": 100,
 "height":50,
-"sprite": "mySprite2.txt",
+"sprite": "",
 }
