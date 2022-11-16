@@ -61,7 +61,7 @@ int main()
 
   //Create a rectangle which represents a wall
   //Obj wall = createWall();
-
+  Projectile * p;
   
   while (window.isOpen())
   {
@@ -75,6 +75,14 @@ int main()
         case Event::Closed:
           window.close();
           break;
+		//mouse click
+		case Event::MouseButtonPressed:
+			p = new Projectile(( *player).getX(), (*player).getY(), 10, 10, "", 0, 100, 0);
+			renderable.push_back(p);
+			objects.push_back(p);
+			collidable.push_back(p);
+			movable.push_back(p);
+			break;
         // we don't process other types of events
         default:
           break;
