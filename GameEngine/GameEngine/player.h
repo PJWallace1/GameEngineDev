@@ -8,4 +8,6 @@ private:
 
 public:
   Player(float _x, float _y, float _w, float _h, string _sprite, int _hp, AbilityType _ability, Speed _speed, Weapon *_weapon, int _gold);
+
+  void move();
 };

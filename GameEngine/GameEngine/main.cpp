@@ -34,7 +34,7 @@ int main()
   std::vector<Obj*> objects; //gameObjects
   std::vector<VisibleObj*> renderable; //renderable
   std::vector<Tangible*> collidable; //collidable
-  std::vector<Tangible*> movable; //movable
+  std::vector<MovableObj*> movable; //movable
 
   //An enum representing the possible methods a user can call through key presses
   enum MethodNames { null = -1, moveUp = 0, moveDown, moveRight, moveLeft };
@@ -90,8 +90,8 @@ int main()
       }
     }
     //Process the method calls in the queue
-    player->setX(player->getR().getPosition().x);
-    player->setY(player->getR().getPosition().y);
+    player->storeX();
+    player->storeY();
     while (!processes.empty()) {
       switch(processes.front())
       {
@@ -113,9 +113,14 @@ int main()
       processes.pop();
     }
 
-    pe.calculateCollisions(collidable);
-
+    //Move all objects that want to move
     pe.moveObjects(movable);
+    //Calculate collisions based on movement
+    pe.calculateCollisions(collidable);
+    //Process based on collisions
+    //pe.processCollisions(collidable);
+
+    
 
     window.clear();
     renderScreen(window, renderable);

@@ -19,8 +19,10 @@ public:
   void moveRight(float numPix, Tangible& o);
 
 
-  void moveObjects(std::vector<Tangible *>& movable);
+  void moveObjects(std::vector<MovableObj *>& movable);
 
   void calculateCollisions(std::vector<Tangible *>& collidable);
+
+  void processCollisions(std::vector<Tangible *>& collidable);
 
 };

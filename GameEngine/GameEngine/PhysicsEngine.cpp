@@ -16,17 +16,26 @@ void PhysicsEngine::moveDown(float numPix, Tangible& o) { o.moveR(0.f, numPix); 
 void PhysicsEngine::moveRight(float numPix, Tangible& o) { o.moveR(numPix, 0.f); }
 
 
-void PhysicsEngine::moveObjects(std::vector<Tangible *>& movable) {
-  for (Tangible* o : movable) {
+void PhysicsEngine::moveObjects(std::vector<MovableObj *>& movable) {
+  for (MovableObj* o : movable) {
+    o->move();
+  }
+}
+
+//TODO: Make work
+/*
+void PhysicsEngine::processCollisions(std::vector<Tangible *>& collidable) {
+  for (Tangible* o : collidable) {
     if (checkCollision(*o)) {
-      (*o).setRPosition((*o).getX(), (*o).getY());
+      (*o).setRPosition((*o).getPrevX(), (*o).getPrevY());
     }
     else {
-      (*o).setX((*o).getR().getPosition().x);
-      (*o).setY((*o).getR().getPosition().y);
+      (*o).setPrevX((*o).getR().getPosition().x);
+      (*o).setPrevY((*o).getR().getPosition().y);
     }
   }
 }
+*/
 
 void PhysicsEngine::calculateCollisions(std::vector<Tangible *>& collidable) {
   collisions.clear();

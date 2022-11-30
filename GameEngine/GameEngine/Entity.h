@@ -1,12 +1,12 @@
 #pragma once
-#include "VisibleObj.h"
+#include "MovableObj.h"
 #include "Weapon.h"
 
 enum Speed { SLOW = 2, MEDIUM = 4, FAST = 8};
 
 enum AbilityType { HEAL, SPEED, STRENGTH };
 
-class Entity : public VisibleObj
+class Entity : public MovableObj
 {
 protected:
   int hp;
@@ -16,6 +16,9 @@ protected:
 
 public:
   Entity(float _x, float _y, float _w, float _h, string _sprite, int _hp, AbilityType _ability, Speed _speed, Weapon *_weapon);
+
+  //All children can move, but in their own way
+  virtual void move() {}
 
   int getHP() { return hp; }
   AbilityType getAbility() { return ability; }

@@ -123,13 +123,14 @@
   }
 
   Enemy* JSONReader::parseEnemy(ifstream& in) {
+    enum MovementPattern { HORIZONTAL, VERTICAL, CLOCKWISE, COUNTERCLOCKWISE };
     float x, y, w, h;
     int hp;
     string spr;
     AbilityType a;
     Weapon *weapon;
     Speed speed;
-    MovementPattern mp;
+    EnemyMovementStrategy* ems;
     AttackPattern ap;
     int goldDropped;
 
@@ -158,13 +159,21 @@
     getline(in, inputLine);
 
     getline(in, inputLine);
-    mp = static_cast<MovementPattern>(parseForInt(inputLine));
+    MovementPattern mp = static_cast<MovementPattern>(parseForInt(inputLine));
+    switch (mp) {
+      case HORIZONTAL:
+        ems = new HorizontalEnemyMovementStrategy();
+        break;
+      default:
+        ems = new HorizontalEnemyMovementStrategy();
+        break;
+    }
     getline(in, inputLine);
     ap = static_cast<AttackPattern>(parseForInt(inputLine));
     getline(in, inputLine);
     goldDropped = parseForInt(inputLine);
 
-    Enemy* e = new Enemy(x, y, w, h, spr, hp, a, speed, weapon, mp, ap, goldDropped);
+    Enemy* e = new Enemy(x, y, w, h, spr, hp, a, speed, weapon, ems, ap, goldDropped);
 
     return e;
   }
@@ -217,7 +226,7 @@
     return e;
   }
 
-	vector<Obj*> JSONReader::read(vector<Obj*>& objects, vector<VisibleObj*>& renderable, vector<Tangible*>& collidable, vector<Tangible*>& movable) {
+	vector<Obj*> JSONReader::read(vector<Obj*>& objects, vector<VisibleObj*>& renderable, vector<Tangible*>& collidable, vector<MovableObj*>& movable) {
 		ifstream in;
 		string inputLine, objType;
     vector<Obj*> createdObjs;

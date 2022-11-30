@@ -1,14 +1,44 @@
 ﻿  Enemy.cpp
+  EnemyMovementStrategy.cpp
   Entity.cpp
+  EnviornmentObj.cpp
+  HorizontalEnemyMovementStrategy.cpp
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\utility(239): warning C4244: 'initializing': conversion from '_Ty' to '_Ty1', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+          and
+          [
+              _Ty1=float
+          ]
+  c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\horizontalenemymovementstrategy.cpp(4): note: see reference to function template instantiation 'std::pair<float,float>::pair<int,int,0>(std::pair<int,int> &&) noexcept' being compiled
+  c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\horizontalenemymovementstrategy.cpp(4): note: see reference to function template instantiation 'std::pair<float,float>::pair<int,int,0>(std::pair<int,int> &&) noexcept' being compiled
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\utility(240): warning C4244: 'initializing': conversion from '_Ty' to '_Ty2', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+          and
+          [
+              _Ty2=float
+          ]
+  InteractableObj.cpp
   JsonReader.cpp
 c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\jsonreader.cpp(10): warning C4018: '<': signed/unsigned mismatch
 c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\jsonreader.cpp(25): warning C4018: '<': signed/unsigned mismatch
 c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\jsonreader.cpp(41): warning C4018: '<': signed/unsigned mismatch
 c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\jsonreader.cpp(57): warning C4018: '<': signed/unsigned mismatch
+  MovableObj.cpp
   PhysicsEngine.cpp
-c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\physicsengine.cpp(34): warning C4018: '<': signed/unsigned mismatch
-c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\physicsengine.cpp(35): warning C4018: '<': signed/unsigned mismatch
+c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\physicsengine.cpp(43): warning C4018: '<': signed/unsigned mismatch
+c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\physicsengine.cpp(44): warning C4018: '<': signed/unsigned mismatch
   Player.cpp
+  Projectile.cpp
+  Tangible.cpp
+  VisibleObj.cpp
+  Weapon.cpp
   main.cpp
   Generating Code...
+  LINK : C:\Users\garde\Desktop\School\Software Engineering\Git\GameEngineDev\GameEngine\Debug\GameEngine.exe not found or not built by the last incremental link; performing full link
   GameEngine.vcxproj -> C:\Users\garde\Desktop\School\Software Engineering\Git\GameEngineDev\GameEngine\Debug\GameEngine.exe

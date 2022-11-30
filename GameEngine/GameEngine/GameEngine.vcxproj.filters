@@ -57,6 +57,15 @@
     <ClCompile Include="Tangible.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MovableObj.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyMovementStrategy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HorizontalEnemyMovementStrategy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="save.txt">
@@ -98,6 +107,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="EnvironmentObj.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MovableObj.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyMovementStrategy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HorizontalEnemyMovementStrategy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Tangible.h">

@@ -6,6 +6,7 @@
 #include "Enemy.h"
 #include "Projectile.h"
 #include "InteractableObj.h"
+#include "HorizontalEnemyMovementStrategy.h"
 
 using namespace std;
 
@@ -26,5 +27,5 @@ public:
   EnvironmentObj* parseEnvironmentObj(ifstream &in);
 
   //returns obj
-  vector<Obj*> read(vector<Obj*>& objects, vector<VisibleObj*>& renderable, vector<Tangible*>& collidable, vector<Tangible*>& movable);
+  vector<Obj*> read(vector<Obj*>& objects, vector<VisibleObj*>& renderable, vector<Tangible*>& collidable, vector<MovableObj*>& movable);
 };
