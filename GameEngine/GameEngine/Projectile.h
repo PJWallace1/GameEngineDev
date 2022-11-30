@@ -8,9 +8,9 @@ private:
   int damage;
 
 public:
-  Projectile(float _x, float _y, float _w, float _h, string _sprite, float _angle, float _speed, int _damage);
+	Projectile(float _x, float _y, float _w, float _h, string _sprite, float _angle, float _speed, int _damage);
 
-  void move();
+	void move();
 
   float getAngle() { return angle; }
   float getSpeed() { return speed; }

@@ -90,28 +90,28 @@ int main()
       }
     }
     //Process the method calls in the queue
-    player->storeX();
-    player->storeY();
-    while (!processes.empty()) {
-      switch(processes.front())
-      {
-      case moveUp:
-        pe.moveUp(PLAYER_SPEED, *player);
-        break;
-      case moveDown:
-        pe.moveDown(PLAYER_SPEED, *player);
-        break;
-      case moveLeft:
-        pe.moveLeft(PLAYER_SPEED, *player);
-        break;
-      case moveRight:
-        pe.moveRight(PLAYER_SPEED, *player);
-        break;
-      default:
-        break;
-      }
-      processes.pop();
-    }
+    //player->storeX();
+    //player->storeY();
+    //while (!processes.empty()) {
+    //  switch(processes.front())
+    //  {
+    //  case moveUp:
+    //    pe.moveUp(PLAYER_SPEED, *player);
+    //    break;
+    //  case moveDown:
+    //    pe.moveDown(PLAYER_SPEED, *player);
+    //    break;
+    //  case moveLeft:
+    //    pe.moveLeft(PLAYER_SPEED, *player);
+    //    break;
+    //  case moveRight:
+    //    pe.moveRight(PLAYER_SPEED, *player);
+    //    break;
+    //  default:
+    //    break;
+    //  }
+    //  processes.pop();
+    //}
 
     //Move all objects that want to move
     pe.moveObjects(movable);
