@@ -2,6 +2,7 @@
 #include "MovableObj.h"
 #include "Weapon.h"
 
+//Speed isn't being used for enemy rn
 enum Speed { SLOW = 2, MEDIUM = 4, FAST = 8};
 
 enum AbilityType { HEAL, SPEED, STRENGTH };

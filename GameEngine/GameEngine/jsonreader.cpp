@@ -13,54 +13,101 @@
     return output;
   }
 
-  string JSONReader::parseForString(string input) {
+  string JSONReader::stripColon(string input) {
+    input = stripSpaces(input);
     string output = "";
     int i = 0;
-    input = stripSpaces(input);
     if (input.length() > 0) {
       while (input[i] != ':') {
         i++;
       }
-      i+=2;
-      for (int j = i; j < input.length() - 2; j++) {
-        output += input[j];
+      i++;
+      while (i < input.length()) {
+        output += input[i];
+        i++;
       }
     }
     return output;
   }
 
-  int JSONReader::parseForInt(string input) {
+  string JSONReader::stripFrontEnd(string input, int front, int end) {
     string output = "";
-    int i = 0;
-    input = stripSpaces(input);
-    if (input.length() > 0) {
-      while (input[i] != ':') {
-        i++;
-      }
-      i++;
-      for (int j = i; j < input.length() - 1; j++) {
-        output += input[j];
+    //Validate input
+    if (front < 0 || front >= input.length()) {
+      front = 0;
+    }
+    if (end < 0 || end >= input.length()) {
+      end = 0;
+    }
+    //Strip front/end
+    if (front + end <= input.length()) {
+      for (int i = front; i < input.length() - end; i++) {
+        output += input[i];
       }
     }
-    return stoi(output);
+    return output;
+  }
+
+  string JSONReader::parseForString(string input) {
+    input = stripColon(input); //useless stuff
+    input = stripFrontEnd(input, 1, 2); //quotes, comma
+    return input;
+  }
+
+  int JSONReader::parseForInt(string input) {
+    input = stripColon(input); //useless stuff
+    input = stripFrontEnd(input, 0, 1); //comma
+    return stoi(input);
   }
 
   float JSONReader::parseForFloat(string input) {
-    string output = "";
-    int i = 0;
-    input = stripSpaces(input);
-    if (input.length() > 0) {
-      while (input[i] != ':') {
-        i++;
-      }
-      i++;
-      for (int j = i; j < input.length() - 1; j++) {
-        output += input[j];
-      }
+    input = stripColon(input); //useless stuff
+    input = stripFrontEnd(input, 0, 1); //comma
+    return stof(input);
+  }
+  
+  vector<pair<float, float>> JSONReader::parseForVectorOfFloatPairs(string input) {
+    vector<pair<float, float>> output;
+    stringstream str;
+    string pair;
+
+    input = stripColon(input); //useless stuff
+    input = stripFrontEnd(input, 1, 2); //square brackets, commas
+
+    str << input;
+    while (getline(str, pair, ']')) {
+      pair = stripFrontEnd(pair, 1, 0); //front bracket
+      output.push_back(parseForFloatPair(pair));
     }
-    return stof(output);
+    return output;
   }
 
+  pair<float, float> JSONReader::parseForFloatPair(string input) {
+    stringstream str;
+    string x, y;
+
+    str << input;
+    getline(str, x, ',');
+    str >> y;
+
+    return make_pair(stof(x), stof(y));
+  }
+  
+  vector<int> JSONReader::parseForVectorOfInts(string input) {
+    vector<int> output;
+    stringstream str;
+    string myInt;
+
+    input = stripColon(input); //useless stuff
+    input = stripFrontEnd(input, 1, 2); //square brackets, commas
+
+    str << input;
+    while (getline(str, myInt, ',')) {
+      output.push_back(stoi(myInt));
+    }
+    return output;
+  }
+  
   Weapon* JSONReader::parseWeapon(ifstream& in) {
     int ammoCount, reloadTime, damage;
     float shotSpeed;
@@ -130,7 +177,8 @@
     AbilityType a;
     Weapon *weapon;
     Speed speed;
-    EnemyMovementStrategy* ems;
+    vector <pair<float, float>> direction;
+    vector<int> directionTime;
     AttackPattern ap;
     int goldDropped;
 
@@ -152,28 +200,20 @@
     a = static_cast<AbilityType>(parseForInt(inputLine));
     getline(in, inputLine);
     speed = static_cast<Speed>(parseForInt(inputLine));
-
     getline(in, inputLine);
     getline(in, inputLine);
     weapon = parseWeapon(in);
     getline(in, inputLine);
-
     getline(in, inputLine);
-    MovementPattern mp = static_cast<MovementPattern>(parseForInt(inputLine));
-    switch (mp) {
-      case HORIZONTAL:
-        ems = new HorizontalEnemyMovementStrategy();
-        break;
-      default:
-        ems = new HorizontalEnemyMovementStrategy();
-        break;
-    }
+    direction = parseForVectorOfFloatPairs(inputLine);
+    getline(in, inputLine);
+    directionTime = parseForVectorOfInts(inputLine);
     getline(in, inputLine);
     ap = static_cast<AttackPattern>(parseForInt(inputLine));
     getline(in, inputLine);
     goldDropped = parseForInt(inputLine);
 
-    Enemy* e = new Enemy(x, y, w, h, spr, hp, a, speed, weapon, ems, ap, goldDropped);
+    Enemy* e = new Enemy(x, y, w, h, spr, hp, a, speed, weapon, direction, directionTime, ap, goldDropped);
 
     return e;
   }

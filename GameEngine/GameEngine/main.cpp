@@ -3,6 +3,9 @@
 #include <queue>
 #include "PhysicsEngine.h"
 #include "jsonreader.h"
+#include "MovableObj.h"
+
+
 
 //Window dimensions
 const int WINOW_W = 1000;
@@ -139,21 +142,13 @@ int main() {
 
   //stuff 1
   JSONReader j;
-  vector<Obj*> objs;
+  vector<pair<float, float>> output;
 
-  objs = j.read();
+  output = j.parseForVectorOfFloatPairs("\"direction\": [[0, 2] [-2, 0] [0, -2] [2, 0]],");
 
-  cout << "Done" << endl;
-
-  //stuff 2
-  sf::RectangleShape a, b;
-
-  b.setPosition(20, 30);
-
-  a = b;
-
-  b.setPosition(1, 2);
-
+  for (int i = 0; i < output.size(); i++) {
+    cout << output[i].first << " " << output[i].second << endl;
+  }
   return 0;
 }
 */

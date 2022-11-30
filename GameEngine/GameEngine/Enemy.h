@@ -10,10 +10,12 @@ class Enemy : public Entity {
 private:
   int goldDropped;
   AttackPattern ap;
-  EnemyMovementStrategy* ems;
+  vector<pair<float, float>> direction;
+  vector<int> directionTime;
+  int timer, curIndex;
 
 public:
-  Enemy(float _x, float _y, float _w, float _h, string _sprite, int _hp, AbilityType _ability, Speed _speed, Weapon *_weapon,EnemyMovementStrategy* _ems , AttackPattern _ap, int _gd);
+  Enemy(float _x, float _y, float _w, float _h, string _sprite, int _hp, AbilityType _ability, Speed _speed, Weapon *_weapon, vector<pair<float, float>> _direction, vector<int> _directionTime, AttackPattern _ap, int _gd);
 
   void move();
 
