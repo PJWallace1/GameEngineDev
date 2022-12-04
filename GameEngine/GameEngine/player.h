@@ -21,4 +21,7 @@ public:
 
   void move();
 
+  //Returns whether the object needs to be destroyed
+  bool processCollision(Tangible *other);
+
 };

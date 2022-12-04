@@ -12,5 +12,6 @@ protected:
 public:
   VisibleObj(float _x, float _y, float _w, float _h, string _sprite);
   void draw(sf::RenderWindow &window);
+  virtual bool processCollision(Tangible *other) = 0;
 };
 

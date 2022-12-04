@@ -13,16 +13,15 @@ private:
   bool checkCollision(Tangible& o);
 
 public:
-  void moveUp(float numPix, Tangible& o);
-  void moveLeft(float numPix, Tangible& o);
-  void moveDown(float numPix, Tangible& o);
-  void moveRight(float numPix, Tangible& o);
-
 
   void moveObjects(std::vector<MovableObj *>& movable);
 
   void calculateCollisions(std::vector<Tangible *>& collidable);
 
-  void processCollisions(std::vector<Tangible *>& collidable);
+  //Returns a list of objects to destroy
+  std::vector<Obj *> processCollisions(std::vector<Tangible *>& collidable);
+
+  //Get the pairs from the collisions array which contain the given object
+  std::vector<std::pair<Tangible*, Tangible*>> getCollisionsForCollidable(Tangible *collidable);
 
 };

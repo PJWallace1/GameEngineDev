@@ -30,5 +30,11 @@ public:
   void setAbility(AbilityType _ability) { ability = _ability; }
   void setWeapon(Weapon* _weapon) { weapon = _weapon; }
   void setSpeed(Speed _speed) { speed = _speed; }
+
+  //Returns whether the object needs to be destroyed
+  bool takeDamage(int damage);
+
+  //Returns whether the object needs to be destroyed
+  virtual bool processCollision(Tangible *other) = 0;
 };
 

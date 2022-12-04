@@ -7,3 +7,10 @@ Entity::Entity(float _x, float _y, float _w, float _h, string _sprite, int _hp, 
   speed = _speed;
 
 }
+
+bool Entity::takeDamage(int damage) {
+  hp -= damage;
+  if (hp <= 0) {
+    return true;
+  }
+}

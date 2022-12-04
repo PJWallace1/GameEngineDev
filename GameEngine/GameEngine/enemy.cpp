@@ -1,6 +1,7 @@
 #include "Enemy.h"
 
 Enemy::Enemy(float _x, float _y, float _w, float _h, string _sprite, int _hp, AbilityType _ability, Speed _speed, Weapon *_weapon, vector<pair<float, float>> _direction, vector<int> _directionTime, AttackPattern _ap, int _gd) :Entity(_x, _y, _w, _h, _sprite, _hp, _ability, _speed, _weapon) {
+  type = "Enemy";
   goldDropped = _gd;
   direction = _direction;
   directionTime = _directionTime;
@@ -17,4 +18,14 @@ void Enemy::move() {
   timer--;
   storePosition();
   moveR(direction[curIndex].first, direction[curIndex].second);
+}
+
+bool Enemy::processCollision(Tangible *other) {
+  if (other->getType() == "Projectile") {
+    return takeDamage(dynamic_cast<Projectile*>(other)->getDamage());
+  }
+  else if (other->getType() == "EnvironmentObj" || other->getType() == "Player" || other->getType() == "Enemy") {
+    moveBack();
+  }
+  return false;
 }

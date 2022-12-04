@@ -26,4 +26,7 @@ public:
   void setGoldDropped(int _gd) { goldDropped = _gd; }
   //void setMovementPattern(MovementPattern _mp) { mp = _mp; }
   void setAttackPattern(AttackPattern _ap) { ap = _ap; }
+
+  //Returns whether the objects needs to be destroyed
+  bool processCollision(Tangible *other);
 };

@@ -13,5 +13,7 @@ public:
   void moveR(float x, float y);
 
   sf::RectangleShape getR() { return r; }
+
+  virtual bool processCollision(Tangible *other) = 0;
 };
 

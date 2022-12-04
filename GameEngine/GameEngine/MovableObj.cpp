@@ -16,3 +16,7 @@ void MovableObj::storePosition() {
   storeX();
   storeY();
 }
+
+void MovableObj::moveBack() {
+  setRPosition(prevX, prevY);
+}

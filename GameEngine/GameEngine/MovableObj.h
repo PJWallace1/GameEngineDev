@@ -10,6 +10,8 @@ public:
 
   //All children can move, but in their own way
   virtual void move() {}
+  //Move the object to its previous position
+  void moveBack();
 
   float getPrevX() { return prevX; }
   float getPrevY() { return prevY; }
@@ -20,5 +22,7 @@ public:
   void storePosition();
   void storeX();
   void storeY();
+
+  virtual bool processCollision(Tangible *other) = 0;
 };
 

@@ -27,6 +27,10 @@ void renderScreen(sf::RenderWindow &window, std::vector<VisibleObj*>& renderable
   }
 }
 
+void destroyObjects(std::vector<Obj*>& destroy) {
+  //TODO: Destroy things
+}
+
 int main()
 {
   //Create the window and set the frame limit
@@ -38,6 +42,7 @@ int main()
   std::vector<VisibleObj*> renderable; //renderable
   std::vector<Tangible*> collidable; //collidable
   std::vector<MovableObj*> movable; //movable
+  std::vector<Obj*> destroy;
 
   //An enum representing the possible methods a user can call through key presses
   enum MethodNames { null = -1, moveUp = 0, moveDown, moveRight, moveLeft };
@@ -60,11 +65,6 @@ int main()
   j.read(objects, renderable, collidable, movable);
 
   player = dynamic_cast<Player*>(objects[PLYR]);
-
-
-  //Create a rectangle which represents a wall
-  //Obj wall = createWall();
-
   
   while (window.isOpen())
   {
@@ -92,38 +92,16 @@ int main()
         processes.push(keyBinds[k]);
       }
     }
-    //Process the method calls in the queue
-    //player->storeX();
-    //player->storeY();
-    //while (!processes.empty()) {
-    //  switch(processes.front())
-    //  {
-    //  case moveUp:
-    //    pe.moveUp(PLAYER_SPEED, *player);
-    //    break;
-    //  case moveDown:
-    //    pe.moveDown(PLAYER_SPEED, *player);
-    //    break;
-    //  case moveLeft:
-    //    pe.moveLeft(PLAYER_SPEED, *player);
-    //    break;
-    //  case moveRight:
-    //    pe.moveRight(PLAYER_SPEED, *player);
-    //    break;
-    //  default:
-    //    break;
-    //  }
-    //  processes.pop();
-    //}
 
     //Move all objects that want to move
     pe.moveObjects(movable);
     //Calculate collisions based on movement
     pe.calculateCollisions(collidable);
     //Process based on collisions
-    //pe.processCollisions(collidable);
-
-    
+    destroy = pe.processCollisions(collidable);
+    //Destroy objects which need to be destroyed
+    destroyObjects(destroy);
+    destroy.clear();
 
     window.clear();
     renderScreen(window, renderable);

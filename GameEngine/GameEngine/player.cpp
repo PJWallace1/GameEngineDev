@@ -2,6 +2,7 @@
 
 
 Player::Player(float _x, float _y, float _w, float _h, string _sprite, int _hp, AbilityType _ability, Speed _speed, Weapon *_weapon, int _gold):Entity(_x, _y, _w, _h, _sprite, _hp, _ability, _speed, _weapon) {
+  type = "Player";
   gold = _gold;
   keyBinds[22] = moveUp;    //W
   keyBinds[0] = moveLeft;  //A
@@ -19,6 +20,7 @@ void Player::move() {
 			processes.push(keyBinds[k]);
 		}
 	}
+  storePosition();
 	while (!processes.empty()) {
 		switch (processes.front())
 		{
@@ -39,5 +41,19 @@ void Player::move() {
 		}
 		processes.pop();
 	}
+}
+
+bool Player::processCollision(Tangible *other) {
+  if (other->getType() == "Enemy") {
+    takeDamage(1); //TODO: Change to take amount of damage enemy deals
+    moveBack();
+  }
+  else if (other->getType() == "Projectile") {
+    return takeDamage(dynamic_cast<Projectile*>(other)->getDamage());
+  }
+  else if (other->getType() == "EnvironmentObj") {
+    moveBack();
+  }
+  return false;
 }
 
