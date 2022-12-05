@@ -17,4 +17,5 @@ bool Entity::takeDamage(int damage) {
   if (hp <= 0) {
     return true;
   }
+  return false;
 }

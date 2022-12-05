@@ -7,7 +7,7 @@
 #include "MovableObj.h"
 
 //Window dimensions
-const int WINOW_W = 1000;
+const int WINOW_W = 1500;
 const int WINDOW_H = 1000;
 //Frame per second limit
 const int FPS_LIMIT = 60;

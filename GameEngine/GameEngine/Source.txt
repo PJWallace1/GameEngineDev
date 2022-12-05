@@ -1,10 +1,10 @@
 {
 "object": "Player",
-"positionX": 100 ,
-"positionY": 300 ,
-"width": 100,
-"height": 50,
-"sprite": "spr_yellow.png",
+"positionX": 0 ,
+"positionY": 115 ,
+"width": 75,
+"height": 75,
+"sprite": "player.png",
 "HP": 2,
 "ability":0,
 "speed":2,
@@ -20,11 +20,11 @@
 
 {
 "object": "Enemy",
-"positionX": 500 ,
-"positionY":500 ,
-"width": 100,
-"height": 50,
-"sprite": "spr_yellow.png",
+"positionX": 101 ,
+"positionY":300 ,
+"width": 75,
+"height": 75,
+"sprite": "enemy.png",
 "HP": 100,
 "ability":0,
 "speed":2,
@@ -35,8 +35,54 @@
 "damage" : 2,
 "shotSpeed": 5.0,
 }
-"direction": [[0, 2] [-2, 0] [0, -2] [2, 0]],
-"directionTime": [20, 10, 20, 10],
+"direction": [[-2, 0][0, -2] [2, 0][0, 2] ],
+"directionTime": [100, 90, 100, 90],
+"AttackPattern": 0,
+"goldDropped": 20,
+}
+
+{
+"object": "Enemy",
+"positionX": 300 ,
+"positionY":101 ,
+"width": 75,
+"height": 75,
+"sprite": "enemy.png",
+"HP": 100,
+"ability":0,
+"speed":2,
+{
+"object": "Weapon",
+"ammoCount" : 10,
+"reloadTime" : 1,
+"damage" : 2,
+"shotSpeed": 5.0,
+}
+"direction": [ [2, 0][0, 2] [-2, 0][0, -2]],
+"directionTime": [100, 100, 100, 100],
+"AttackPattern": 0,
+"goldDropped": 20,
+}
+
+{
+"object": "Enemy",
+"positionX": 500 ,
+"positionY":500 ,
+"width": 75,
+"height": 75,
+"sprite": "enemy.png",
+"HP": 100,
+"ability":0,
+"speed":2,
+{
+"object": "Weapon",
+"ammoCount" : 10,
+"reloadTime" : 1,
+"damage" : 2,
+"shotSpeed": 5.0,
+}
+"direction": [[-2, 0] [2, 0]],
+"directionTime": [80, 80],
 "AttackPattern": 0,
 "goldDropped": 20,
 }
@@ -44,20 +90,159 @@
 {
 "object": "Projectile":
 "positionX": 450 ,
-"positionY": 303,
+"positionY": 300,
 "width": 20,
 "height":20,
-"sprite": "",
+"sprite": "bullet.png",
 "angle": 20.0,
 "speed": 5.0.
 "damage": 1000,
 }
 
 {
+"object": "Projectile":
+"positionX": 350 ,
+"positionY": 400,
+"width": 20,
+"height":20,
+"sprite": "bullet.png",
+"angle": 20.0,
+"speed": 5.0.
+"damage": 1000,
+}
+{
 "object": "EnvironmentObj":
-"positionX": 300 ,
-"positionY": 303,
+"positionX": 0,
+"positionY": 0,
+"width": 900,
+"height":100,
+"sprite": "wall.png",
+}
+{
+"object": "EnvironmentObj":
+"positionX": 0,
+"positionY": 200,
 "width": 100,
-"height":50,
+"height":300,
 "sprite": "",
+}
+{
+"object": "EnvironmentObj":
+"positionX": 700,
+"positionY": 100,
+"width": 200,
+"height":400,
+"sprite": "",
+}
+{
+"object": "EnvironmentObj":
+"positionX": 200,
+"positionY": 200,
+"width": 100,
+"height":100,
+"sprite": "",
+}
+{
+"object": "EnvironmentObj":
+"positionX": 500,
+"positionY": 200,
+"width": 100,
+"height":100,
+"sprite": "",
+}
+{
+"object": "EnvironmentObj":
+"positionX": 100,
+"positionY": 500,
+"width": 200,
+"height":100,
+"sprite": "",
+}
+{
+"object": "EnvironmentObj":
+"positionX": 600,
+"positionY": 500,
+"width": 300,
+"height":100,
+"sprite": "",
+}
+
+{
+"object": "Enemy",
+"positionX": 500 ,
+"positionY":800 ,
+"width": 75,
+"height": 75,
+"sprite": "enemy.png",
+"HP": 3,
+"ability":0,
+"speed":2,
+{
+"object": "Weapon",
+"ammoCount" : 10,
+"reloadTime" : 1,
+"damage" : 2,
+"shotSpeed": 5.0,
+}
+"direction": [[2, 0]],
+"directionTime": [100],
+"AttackPattern": 0,
+"goldDropped": 20,
+}
+
+{
+"object": "Projectile":
+"positionX": 1000 ,
+"positionY": 800,
+"width": 20,
+"height":20,
+"sprite": "bullet.png",
+"angle": 20.0,
+"speed": 5.0.
+"damage": 1,
+}
+{
+"object": "Projectile":
+"positionX": 1100 ,
+"positionY": 800,
+"width": 20,
+"height":20,
+"sprite": "bullet.png",
+"angle": 20.0,
+"speed": 5.0.
+"damage": 1,
+}
+{
+"object": "Projectile":
+"positionX": 1200 ,
+"positionY": 800,
+"width": 20,
+"height":20,
+"sprite": "bullet.png",
+"angle": 20.0,
+"speed": 5.0.
+"damage": 1,
+}
+
+{
+"object": "Enemy",
+"positionX": 1000 ,
+"positionY":500 ,
+"width": 75,
+"height": 75,
+"sprite": "enemy.png",
+"HP": 100,
+"ability":0,
+"speed":2,
+{
+"object": "Weapon",
+"ammoCount" : 10,
+"reloadTime" : 1,
+"damage" : 2,
+"shotSpeed": 5.0,
+}
+"direction": [[1, 0][0, 1][1, 0][0, 1][1, 0][0, 1][4, 0][0, -4][-8, 0] ],
+"directionTime": [10, 10, 20, 20, 30, 30, 70, 50, 100],
+"AttackPattern": 0,
+"goldDropped": 20,
 }
