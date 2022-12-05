@@ -45,8 +45,8 @@ void Player::move() {
 
 bool Player::processCollision(Tangible *other) {
   if (other->getType() == "Enemy") {
-    takeDamage(1); //TODO: Change to take amount of damage enemy deals
     moveBack();
+    return takeDamage(1); //TODO: Change to take amount of damage enemy deals
   }
   else if (other->getType() == "Projectile") {
     return takeDamage(dynamic_cast<Projectile*>(other)->getDamage());

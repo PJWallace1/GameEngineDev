@@ -17,6 +17,7 @@ protected:
 
 public:
   Entity(float _x, float _y, float _w, float _h, string _sprite, int _hp, AbilityType _ability, Speed _speed, Weapon *_weapon);
+  ~Entity();
 
   //All children can move, but in their own way
   virtual void move() {}

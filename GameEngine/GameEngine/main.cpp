@@ -1,11 +1,10 @@
 #include <map>
 #include <iostream>
 #include <queue>
+#include <set>
 #include "PhysicsEngine.h"
 #include "jsonreader.h"
 #include "MovableObj.h"
-
-
 
 //Window dimensions
 const int WINOW_W = 1000;
@@ -20,15 +19,51 @@ const int PLYR = 0;
 using namespace sf;
 
 //loops from the objects in the renderable array and draws them to the screen
-
 void renderScreen(sf::RenderWindow &window, std::vector<VisibleObj*>& renderable) {
   for (VisibleObj* o : renderable) {
     (*o).draw(window);
   }
 }
 
-void destroyObjects(std::vector<Obj*>& destroy) {
-  //TODO: Destroy things
+void destroyObjects(std::set<Obj*>& destroy, std::vector<Obj*>& objects, std::vector<VisibleObj*>& renderable, std::vector<Tangible*>& collidable, std::vector<MovableObj*>& movable) {
+  set<Obj*>::iterator itr;
+
+  // Displaying set elements
+  for (itr = destroy.begin(); itr != destroy.end(); itr++)
+  {
+    Obj* o = *itr;
+    for (int i = 0; i < objects.size(); i++) {
+      if (*o == *objects[i]) {
+        if (o->getType() == "Player" || o->getType() == "Enemy") {
+          objects.erase(objects.begin() + i); // erase weapon as well
+        }
+        objects.erase(objects.begin() + i);
+        break;
+      }
+    }
+    for (int i = 0; i < renderable.size(); i++) { 
+      if (*o == *renderable[i]) {
+        renderable.erase(renderable.begin() + i);
+        break;
+      }
+    }
+    for (int i = 0; i < collidable.size(); i++) {
+      if (*o == *collidable[i]) {
+        collidable.erase(collidable.begin() + i);
+        break;
+      }
+    }
+    if (o->getType() != "EnvironmentObj") {
+      for (int i = 0; i < movable.size(); i++) {
+        if (*o == *movable[i]) {
+          movable.erase(movable.begin() + i);
+          break;
+        }
+      }
+    }
+    delete o;
+  }
+  destroy.empty();
 }
 
 int main()
@@ -42,7 +77,7 @@ int main()
   std::vector<VisibleObj*> renderable; //renderable
   std::vector<Tangible*> collidable; //collidable
   std::vector<MovableObj*> movable; //movable
-  std::vector<Obj*> destroy;
+  std::set<Obj*> destroy;
 
   //An enum representing the possible methods a user can call through key presses
   enum MethodNames { null = -1, moveUp = 0, moveDown, moveRight, moveLeft };
@@ -56,15 +91,7 @@ int main()
 
   PhysicsEngine pe;
   JSONReader j;
-  Player *player;
-
-  //A queue for processing method calls from key presses
-  std::queue<MethodNames> processes;
-
-  
   j.read(objects, renderable, collidable, movable);
-
-  player = dynamic_cast<Player*>(objects[PLYR]);
   
   while (window.isOpen())
   {
@@ -83,15 +110,6 @@ int main()
           break;
       }
     }
-    //Iterates through an enum which contains all keys on a keyboard
-    for (int k = Keyboard::A; k != Keyboard::KeyCount; k++) {
-      //If a key is pressed
-      if (Keyboard::isKeyPressed(static_cast<Keyboard::Key>(k))) {
-        //Search for a correlated method call (represented as an enum) for that key within the keyBinds array
-        //then add the correlated method call to a queue for processing
-        processes.push(keyBinds[k]);
-      }
-    }
 
     //Move all objects that want to move
     pe.moveObjects(movable);
@@ -100,8 +118,7 @@ int main()
     //Process based on collisions
     destroy = pe.processCollisions(collidable);
     //Destroy objects which need to be destroyed
-    destroyObjects(destroy);
-    destroy.clear();
+    destroyObjects(destroy, objects, renderable, collidable, movable);
 
     window.clear();
     renderScreen(window, renderable);

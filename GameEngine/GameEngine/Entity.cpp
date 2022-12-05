@@ -8,6 +8,10 @@ Entity::Entity(float _x, float _y, float _w, float _h, string _sprite, int _hp, 
 
 }
 
+Entity::~Entity() {
+  delete weapon;
+}
+
 bool Entity::takeDamage(int damage) {
   hp -= damage;
   if (hp <= 0) {

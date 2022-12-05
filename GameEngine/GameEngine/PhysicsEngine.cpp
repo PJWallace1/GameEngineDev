@@ -26,25 +26,13 @@ std::vector<std::pair<Tangible*, Tangible*>> PhysicsEngine::getCollisionsForColl
   return collisionsSubset;
 }
 
-std::vector<Obj*> PhysicsEngine::processCollisions(std::vector<Tangible *>& collidable) {
-  std::vector<Obj *> destroy;
-  for (Tangible* o : collidable) {
-    std::vector<std::pair<Tangible*, Tangible*>> collisionsSubset = getCollisionsForCollidable(o);
-    for (std::pair<Tangible*, Tangible*> p : collisionsSubset) {
-      //Get the other object
-      Tangible *other;
-      if (p.first->getId() == o->getId()) {
-        other = p.second;
-      }
-      else {
-        other = p.first;
-      }
+std::set<Obj*> PhysicsEngine::processCollisions(std::vector<Tangible *>& collidable) {
+  std::set<Obj *> destroy;
+    for (std::pair<Tangible*, Tangible*> p : collisions) {
       //Process the collision and destory it if needed
-      if (o->processCollision(other)) {
-        destroy.push_back(o);
-      }
+      if (p.first->processCollision(p.second)) { destroy.insert(p.first); }
+      if (p.second->processCollision(p.first)) { destroy.insert(p.second); }
     }
-  }
   return destroy;
 }
 

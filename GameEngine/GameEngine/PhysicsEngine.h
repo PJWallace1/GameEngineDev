@@ -4,6 +4,7 @@
 #include "Player.h"
 #include <utility>
 #include <iostream>
+#include <set>
 
 class PhysicsEngine
 {
@@ -19,7 +20,7 @@ public:
   void calculateCollisions(std::vector<Tangible *>& collidable);
 
   //Returns a list of objects to destroy
-  std::vector<Obj *> processCollisions(std::vector<Tangible *>& collidable);
+  std::set<Obj *> processCollisions(std::vector<Tangible *>& collidable);
 
   //Get the pairs from the collisions array which contain the given object
   std::vector<std::pair<Tangible*, Tangible*>> getCollisionsForCollidable(Tangible *collidable);
