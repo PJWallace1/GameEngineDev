@@ -6,6 +6,7 @@ using namespace std;
 class Obj {
 protected:
   int id;
+  string type;
   
 public:
   Obj();
@@ -13,6 +14,7 @@ public:
 
   void setId(int _id) { id = _id; }
   int getId() { return id; }
+  string getType() { return type; }
 
   virtual void allowCast() {};
 };

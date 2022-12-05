@@ -5,7 +5,7 @@
 "width": 100,
 "height": 50,
 "sprite": "spr_yellow.png",
-"HP": 100,
+"HP": 2,
 "ability":0,
 "speed":2,
 {
@@ -35,7 +35,8 @@
 "damage" : 2,
 "shotSpeed": 5.0,
 }
-"MovementPattern": 0,
+"direction": [[0, 2] [-2, 0] [0, -2] [2, 0]],
+"directionTime": [20, 10, 20, 10],
 "AttackPattern": 0,
 "goldDropped": 20,
 }

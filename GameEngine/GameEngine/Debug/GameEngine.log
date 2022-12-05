@@ -1,27 +1,6 @@
-﻿  Enemy.cpp
-  Entity.cpp
-  EnviornmentObj.cpp
-  InteractableObj.cpp
-  JsonReader.cpp
-c:\users\jie_ji1\documents\github\gameenginedev\gameengine\gameengine\jsonreader.cpp(10): warning C4018: '<': signed/unsigned mismatch
-c:\users\jie_ji1\documents\github\gameenginedev\gameengine\gameengine\jsonreader.cpp(25): warning C4018: '<': signed/unsigned mismatch
-c:\users\jie_ji1\documents\github\gameenginedev\gameengine\gameengine\jsonreader.cpp(41): warning C4018: '<': signed/unsigned mismatch
-c:\users\jie_ji1\documents\github\gameenginedev\gameengine\gameengine\jsonreader.cpp(57): warning C4018: '<': signed/unsigned mismatch
-  PhysicsEngine.cpp
-c:\users\jie_ji1\documents\github\gameenginedev\gameengine\gameengine\physicsengine.cpp(25): error C2039: 'setX': is not a member of 'Tangible'
-  c:\users\jie_ji1\documents\github\gameenginedev\gameengine\gameengine\tangible.h(3): note: see declaration of 'Tangible'
-c:\users\jie_ji1\documents\github\gameenginedev\gameengine\gameengine\physicsengine.cpp(26): error C2039: 'setY': is not a member of 'Tangible'
-  c:\users\jie_ji1\documents\github\gameenginedev\gameengine\gameengine\tangible.h(3): note: see declaration of 'Tangible'
-c:\users\jie_ji1\documents\github\gameenginedev\gameengine\gameengine\physicsengine.cpp(34): warning C4018: '<': signed/unsigned mismatch
-c:\users\jie_ji1\documents\github\gameenginedev\gameengine\gameengine\physicsengine.cpp(35): warning C4018: '<': signed/unsigned mismatch
-  Player.cpp
-  Projectile.cpp
-  Tangible.cpp
-  VisibleObj.cpp
-  Weapon.cpp
-  main.cpp
-c:\users\jie_ji1\documents\github\gameenginedev\gameengine\gameengine\main.cpp(101): error C2039: 'setX': is not a member of 'Player'
-  c:\users\jie_ji1\documents\github\gameenginedev\gameengine\gameengine\player.h(5): note: see declaration of 'Player'
-c:\users\jie_ji1\documents\github\gameenginedev\gameengine\gameengine\main.cpp(102): error C2039: 'setY': is not a member of 'Player'
-  c:\users\jie_ji1\documents\github\gameenginedev\gameengine\gameengine\player.h(5): note: see declaration of 'Player'
-  Generating Code...
+﻿  Player.cpp
+c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\player.cpp(28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\player.cpp(31): warning C4244: 'argument': conversion from 'Speed' to 'float', possible loss of data
+c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\player.cpp(34): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\player.cpp(37): warning C4244: 'argument': conversion from 'Speed' to 'float', possible loss of data
+  GameEngine.vcxproj -> C:\Users\garde\Desktop\School\Software Engineering\Git\GameEngineDev\GameEngine\Debug\GameEngine.exe

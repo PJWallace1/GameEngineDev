@@ -10,22 +10,30 @@ bool PhysicsEngine::checkCollision(Tangible& o) {
 }
 
 
-void PhysicsEngine::moveUp(float numPix, Tangible& o) { o.moveR(0.f, -1 * numPix); }
-void PhysicsEngine::moveLeft(float numPix, Tangible& o) { o.moveR(-1 * numPix, 0.f); }
-void PhysicsEngine::moveDown(float numPix, Tangible& o) { o.moveR(0.f, numPix); }
-void PhysicsEngine::moveRight(float numPix, Tangible& o) { o.moveR(numPix, 0.f); }
+void PhysicsEngine::moveObjects(std::vector<MovableObj *>& movable) {
+  for (MovableObj* o : movable) {
+    o->move();
+  }
+}
 
-
-void PhysicsEngine::moveObjects(std::vector<Tangible *>& movable) {
-  for (Tangible* o : movable) {
-    if (checkCollision(*o)) {
-      (*o).setRPosition((*o).getX(), (*o).getY());
-    }
-    else {
-      (*o).setX((*o).getR().getPosition().x);
-      (*o).setY((*o).getR().getPosition().y);
+std::vector<std::pair<Tangible*, Tangible*>> PhysicsEngine::getCollisionsForCollidable(Tangible *o) {
+  std::vector<std::pair<Tangible*, Tangible*>> collisionsSubset;
+  for (std::pair<Tangible*, Tangible*> p : collisions) {
+    if (*p.first == *o || *p.second == *o) {
+      collisionsSubset.push_back(p);
     }
   }
+  return collisionsSubset;
+}
+
+std::set<Obj*> PhysicsEngine::processCollisions(std::vector<Tangible *>& collidable) {
+  std::set<Obj *> destroy;
+    for (std::pair<Tangible*, Tangible*> p : collisions) {
+      //Process the collision and destory it if needed
+      if (p.first->processCollision(p.second)) { destroy.insert(p.first); }
+      if (p.second->processCollision(p.first)) { destroy.insert(p.second); }
+    }
+  return destroy;
 }
 
 void PhysicsEngine::calculateCollisions(std::vector<Tangible *>& collidable) {

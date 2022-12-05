@@ -126,12 +126,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EnemyMovementStrategy.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EnviornmentObj.cpp" />
     <ClCompile Include="Function.cpp" />
+    <ClCompile Include="HorizontalEnemyMovementStrategy.cpp" />
     <ClCompile Include="InteractableObj.cpp" />
     <ClCompile Include="JsonReader.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MovableObj.cpp" />
     <ClCompile Include="Obj.cpp" />
     <ClCompile Include="PhysicsEngine.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -146,10 +149,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EnemyMovementStrategy.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EnvironmentObj.h" />
+    <ClInclude Include="HorizontalEnemyMovementStrategy.h" />
     <ClInclude Include="InteractableObj.h" />
     <ClInclude Include="JsonReader.h" />
+    <ClInclude Include="MovableObj.h" />
     <ClInclude Include="Obj.h" />
     <ClInclude Include="PhysicsEngine.h" />
     <ClInclude Include="Player.h" />

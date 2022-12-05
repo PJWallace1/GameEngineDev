@@ -1,8 +1,10 @@
 #include <map>
 #include <iostream>
 #include <queue>
+#include <set>
 #include "PhysicsEngine.h"
 #include "jsonreader.h"
+#include "MovableObj.h"
 
 //Window dimensions
 const int WINOW_W = 1000;
@@ -17,11 +19,51 @@ const int PLYR = 0;
 using namespace sf;
 
 //loops from the objects in the renderable array and draws them to the screen
-
 void renderScreen(sf::RenderWindow &window, std::vector<VisibleObj*>& renderable) {
   for (VisibleObj* o : renderable) {
     (*o).draw(window);
   }
+}
+
+void destroyObjects(std::set<Obj*>& destroy, std::vector<Obj*>& objects, std::vector<VisibleObj*>& renderable, std::vector<Tangible*>& collidable, std::vector<MovableObj*>& movable) {
+  set<Obj*>::iterator itr;
+
+  // Displaying set elements
+  for (itr = destroy.begin(); itr != destroy.end(); itr++)
+  {
+    Obj* o = *itr;
+    for (int i = 0; i < objects.size(); i++) {
+      if (*o == *objects[i]) {
+        if (o->getType() == "Player" || o->getType() == "Enemy") {
+          objects.erase(objects.begin() + i); // erase weapon as well
+        }
+        objects.erase(objects.begin() + i);
+        break;
+      }
+    }
+    for (int i = 0; i < renderable.size(); i++) { 
+      if (*o == *renderable[i]) {
+        renderable.erase(renderable.begin() + i);
+        break;
+      }
+    }
+    for (int i = 0; i < collidable.size(); i++) {
+      if (*o == *collidable[i]) {
+        collidable.erase(collidable.begin() + i);
+        break;
+      }
+    }
+    if (o->getType() != "EnvironmentObj") {
+      for (int i = 0; i < movable.size(); i++) {
+        if (*o == *movable[i]) {
+          movable.erase(movable.begin() + i);
+          break;
+        }
+      }
+    }
+    delete o;
+  }
+  destroy.empty();
 }
 
 int main()
@@ -34,7 +76,8 @@ int main()
   std::vector<Obj*> objects; //gameObjects
   std::vector<VisibleObj*> renderable; //renderable
   std::vector<Tangible*> collidable; //collidable
-  std::vector<Tangible*> movable; //movable
+  std::vector<MovableObj*> movable; //movable
+  std::set<Obj*> destroy;
 
   //An enum representing the possible methods a user can call through key presses
   enum MethodNames { null = -1, moveUp = 0, moveDown, moveRight, moveLeft };
@@ -48,20 +91,7 @@ int main()
 
   PhysicsEngine pe;
   JSONReader j;
-  Player *player;
-
-  //A queue for processing method calls from key presses
-  std::queue<MethodNames> processes;
-
-  
   j.read(objects, renderable, collidable, movable);
-
-  player = dynamic_cast<Player*>(objects[PLYR]);
-
-
-  //Create a rectangle which represents a wall
-  //Obj wall = createWall();
-  Projectile * p;
   
   while (window.isOpen())
   {
@@ -75,55 +105,20 @@ int main()
         case Event::Closed:
           window.close();
           break;
-		//mouse click
-		case Event::MouseButtonPressed:
-			p = new Projectile(( *player).getX(), (*player).getY(), 10, 10, "", 0, 100, 0);
-			renderable.push_back(p);
-			objects.push_back(p);
-			collidable.push_back(p);
-			movable.push_back(p);
-			break;
         // we don't process other types of events
         default:
           break;
       }
     }
-    //Iterates through an enum which contains all keys on a keyboard
-    for (int k = Keyboard::A; k != Keyboard::KeyCount; k++) {
-      //If a key is pressed
-      if (Keyboard::isKeyPressed(static_cast<Keyboard::Key>(k))) {
-        //Search for a correlated method call (represented as an enum) for that key within the keyBinds array
-        //then add the correlated method call to a queue for processing
-        processes.push(keyBinds[k]);
-      }
-    }
-    //Process the method calls in the queue
-    player->setX(player->getR().getPosition().x);
-    player->setY(player->getR().getPosition().y);
-    while (!processes.empty()) {
-      switch(processes.front())
-      {
-      case moveUp:
-        pe.moveUp(PLAYER_SPEED, *player);
-        break;
-      case moveDown:
-        pe.moveDown(PLAYER_SPEED, *player);
-        break;
-      case moveLeft:
-        pe.moveLeft(PLAYER_SPEED, *player);
-        break;
-      case moveRight:
-        pe.moveRight(PLAYER_SPEED, *player);
-        break;
-      default:
-        break;
-      }
-      processes.pop();
-    }
 
-    pe.calculateCollisions(collidable);
-
+    //Move all objects that want to move
     pe.moveObjects(movable);
+    //Calculate collisions based on movement
+    pe.calculateCollisions(collidable);
+    //Process based on collisions
+    destroy = pe.processCollisions(collidable);
+    //Destroy objects which need to be destroyed
+    destroyObjects(destroy, objects, renderable, collidable, movable);
 
     window.clear();
     renderScreen(window, renderable);
@@ -142,21 +137,13 @@ int main() {
 
   //stuff 1
   JSONReader j;
-  vector<Obj*> objs;
+  vector<pair<float, float>> output;
 
-  objs = j.read();
+  output = j.parseForVectorOfFloatPairs("\"direction\": [[0, 2] [-2, 0] [0, -2] [2, 0]],");
 
-  cout << "Done" << endl;
-
-  //stuff 2
-  sf::RectangleShape a, b;
-
-  b.setPosition(20, 30);
-
-  a = b;
-
-  b.setPosition(1, 2);
-
+  for (int i = 0; i < output.size(); i++) {
+    cout << output[i].first << " " << output[i].second << endl;
+  }
   return 0;
 }
 */
