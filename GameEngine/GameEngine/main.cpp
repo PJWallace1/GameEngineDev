@@ -120,7 +120,7 @@ int main()
     //Destroy objects which need to be destroyed
     destroyObjects(destroy, objects, renderable, collidable, movable);
 
-    window.clear();
+    window.clear(sf::Color(124, 222, 139));
     renderScreen(window, renderable);
     window.display();
   }

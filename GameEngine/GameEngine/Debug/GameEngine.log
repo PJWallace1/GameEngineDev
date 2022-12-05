@@ -1,6 +1,2 @@
-﻿  Player.cpp
-c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\player.cpp(28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\player.cpp(31): warning C4244: 'argument': conversion from 'Speed' to 'float', possible loss of data
-c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\player.cpp(34): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\player.cpp(37): warning C4244: 'argument': conversion from 'Speed' to 'float', possible loss of data
+﻿  VisibleObj.cpp
   GameEngine.vcxproj -> C:\Users\garde\Desktop\School\Software Engineering\Git\GameEngineDev\GameEngine\Debug\GameEngine.exe

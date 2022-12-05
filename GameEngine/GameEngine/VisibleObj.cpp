@@ -2,6 +2,7 @@
 
 VisibleObj::VisibleObj(float _x, float _y, float _w, float _h, string _sprite):Tangible(_x, _y, _w, _h) {
   if (texture.loadFromFile(_sprite)) {
+    texture.setRepeated(true);
     sprite.setTexture(texture);
     isTexture = true;
   }
