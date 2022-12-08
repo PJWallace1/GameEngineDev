@@ -8,7 +8,7 @@ using namespace sf;
 class Player : public Entity {
 private:
   int gold;
-  enum MethodNames { null = -1, moveUp = 0, moveDown, moveRight, moveLeft };
+  enum MethodNames { null = 0, moveUp, moveDown, moveRight, moveLeft };
   std::queue<MethodNames> processes;
   Player *player;
   //An array which maps a key (represented as an enum/int which corresponds to an index) to a method name

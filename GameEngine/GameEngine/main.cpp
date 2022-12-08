@@ -110,6 +110,24 @@ int main()
           break;
       }
     }
+    if (Keyboard::isKeyPressed(Keyboard::R)) {
+      renderable.clear();
+      collidable.clear();
+      movable.clear();
+      destroy.clear();
+      /*
+      for (auto it = objects.begin(); it != objects.end(); ++it) {
+        if ((*it)->getType() == "Weapon") {
+          objects.erase(it);
+        }
+      }
+      */
+      for (Obj* o : objects) {
+        o->justDeleteMe();
+      }
+      objects.clear();
+      j.read(objects, renderable, collidable, movable);
+    }
 
     //Move all objects that want to move
     pe.moveObjects(movable);

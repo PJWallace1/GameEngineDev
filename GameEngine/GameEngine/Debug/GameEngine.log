@@ -1,1 +1,6 @@
-﻿  GameEngine.vcxproj -> C:\Users\garde\Desktop\School\Software Engineering\Git\GameEngineDev\GameEngine\Debug\GameEngine.exe
+﻿  main.cpp
+c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\main.cpp(35): warning C4018: '<': signed/unsigned mismatch
+c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\main.cpp(44): warning C4018: '<': signed/unsigned mismatch
+c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\main.cpp(50): warning C4018: '<': signed/unsigned mismatch
+c:\users\garde\desktop\school\software engineering\git\gameenginedev\gameengine\gameengine\main.cpp(57): warning C4018: '<': signed/unsigned mismatch
+  GameEngine.vcxproj -> C:\Users\garde\Desktop\School\Software Engineering\Git\GameEngineDev\GameEngine\Debug\GameEngine.exe

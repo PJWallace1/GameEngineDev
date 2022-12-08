@@ -16,5 +16,9 @@ public:
   int getId() { return id; }
   string getType() { return type; }
 
+  void justDeleteMe() {
+    delete this;
+  }
+
   virtual void allowCast() {};
 };

@@ -12,6 +12,8 @@ public:
   void setRPosition(float x, float y) { r.setPosition(x, y); }
   void moveR(float x, float y);
 
+  float getX();
+  float getY();
   sf::RectangleShape getR() { return r; }
 
   virtual bool processCollision(Tangible *other) = 0;
