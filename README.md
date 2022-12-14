@@ -1,6 +1,6 @@
 # GameEngineDev
 
-Features:
+Features:<br>
 -Top down game board design
 -Player, Enemy, Environment Objects, Projectile, and Weapons
 -These elements can be added to the game world through the Source.txt file in json format.
